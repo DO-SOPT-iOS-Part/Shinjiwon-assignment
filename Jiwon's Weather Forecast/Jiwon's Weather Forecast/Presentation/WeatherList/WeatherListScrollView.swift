@@ -8,8 +8,13 @@
 import UIKit
 
 class WeatherListScrollView: UIView {
-
+    
     // MARK: - Properties
+    let placeholder: String = "도시 또는 공항 검색"
+    private lazy var attributedString = NSMutableAttributedString(string: placeholder,
+                                                                  attributes:
+                                                                    [NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Regular", size: 19)!,
+                                                                     NSAttributedString.Key.foregroundColor: UIColor(hex: 0x8C8C8C)])
     
     // MARK: - UI Components
     var scrollView = UIScrollView()
@@ -49,11 +54,13 @@ class WeatherListScrollView: UIView {
         }
         
         scrollWeatherSearchBar.do {
-            $0.showsCancelButton = false
-            $0.backgroundColor = .black
             $0.searchTextField.backgroundColor = UIColor(hex: 0x1A1A1A)
             $0.searchTextField.leftView?.tintColor = UIColor(hex: 0x8C8C8C)
+            $0.searchTextField.attributedPlaceholder = attributedString
+            $0.searchTextField.textColor = .white
             $0.clipsToBounds = true
+            $0.showsCancelButton = false
+            $0.barTintColor = .clear
         }
         
         scrollBox.do {
