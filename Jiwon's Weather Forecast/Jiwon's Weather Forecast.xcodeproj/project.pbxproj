@@ -20,6 +20,11 @@
 		2C2EFE312ADD5E7E00B2A2EC /* MainnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainnViewController.swift; sourceTree = "<group>"; };
 		2C2EFE362ADD5E8000B2A2EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C2EFE3B2ADD5E8000B2A2EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C2EFE442ADD692400B2A2EC /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
+		2C2EFE452ADD692B00B2A2EC /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
+		2C2EFE462ADD693B00B2A2EC /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
+		2C2EFE472ADD693F00B2A2EC /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
+		2C2EFE482ADD695500B2A2EC /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,10 +60,23 @@
 				2C2EFE2D2ADD5E7E00B2A2EC /* AppDelegate.swift */,
 				2C2EFE2F2ADD5E7E00B2A2EC /* SceneDelegate.swift */,
 				2C2EFE312ADD5E7E00B2A2EC /* MainnViewController.swift */,
+				2C2EFE432ADD690B00B2A2EC /* Fonts */,
 				2C2EFE362ADD5E8000B2A2EC /* Assets.xcassets */,
 				2C2EFE3B2ADD5E8000B2A2EC /* Info.plist */,
 			);
 			path = "Jiwon's Weather Forecast";
+			sourceTree = "<group>";
+		};
+		2C2EFE432ADD690B00B2A2EC /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				2C2EFE442ADD692400B2A2EC /* SF-Pro-Display-Bold.otf */,
+				2C2EFE452ADD692B00B2A2EC /* SF-Pro-Display-Thin.otf */,
+				2C2EFE462ADD693B00B2A2EC /* SF-Pro-Display-Medium.otf */,
+				2C2EFE472ADD693F00B2A2EC /* SF-Pro-Display-Light.otf */,
+				2C2EFE482ADD695500B2A2EC /* SF-Pro-Display-Regular.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
