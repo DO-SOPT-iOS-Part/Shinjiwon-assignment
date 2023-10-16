@@ -10,10 +10,6 @@
 		<string>SF-Pro-Display-Light.otf</string>
 		<string>SF-Pro-Display-Regular.otf</string>
 	</array>
-	<key>CFBundleInfoDictionaryVersion</key>
-	<string>6.0</string>
-	<key>CFBundleExecutable</key>
-	<string></string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
