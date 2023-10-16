@@ -59,8 +59,9 @@ class WeatherListScrollView: UIView {
             $0.searchTextField.attributedPlaceholder = attributedString
             $0.searchTextField.textColor = .white
             $0.clipsToBounds = true
-            $0.showsCancelButton = false
+            $0.setShowsCancelButton(false, animated: true)
             $0.barTintColor = .clear
+            $0.setImage(UIImage(), for: UISearchBar.Icon.clear, state: .normal)
         }
         
         scrollBox.do {
