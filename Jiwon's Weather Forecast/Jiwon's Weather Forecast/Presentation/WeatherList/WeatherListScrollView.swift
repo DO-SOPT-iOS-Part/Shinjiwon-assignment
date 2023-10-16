@@ -16,7 +16,7 @@ class WeatherListScrollView: UIView {
     var scrollContentView = UIView()
     var scrollWeatherLabel = UILabel()
     var scrollWeatherSearchBar = UISearchBar()
-    var scrollWeatherCell = UIView()
+    var scrollWeatherButton = WeatherBaseButton()
     var scrollBox = UIView()
     
     // MARK: - Life Cycle
@@ -56,10 +56,6 @@ class WeatherListScrollView: UIView {
             $0.clipsToBounds = true
         }
         
-        scrollWeatherCell.do {
-            $0.backgroundColor = .systemPink
-        }
-        
         scrollBox.do {
             $0.backgroundColor = .black
         }
@@ -70,6 +66,7 @@ class WeatherListScrollView: UIView {
         self.addSubview(scrollView)
         scrollView.addSubview(scrollContentView)
         scrollContentView.addSubviews(scrollWeatherLabel, scrollWeatherSearchBar, scrollBox)
+        scrollContentView.addSubviews(scrollWeatherButton)
     }
     
     private func layout() {
@@ -95,10 +92,16 @@ class WeatherListScrollView: UIView {
         }
         
         scrollBox.snp.makeConstraints() {
-            $0.top.equalTo(scrollWeatherSearchBar.snp.bottom).offset(10)
+            $0.top.equalTo(scrollWeatherButton.snp.bottom).offset(10)
             $0.width.equalToSuperview()
             $0.centerX.equalToSuperview()
             $0.height.equalTo(1000)
+        }
+        
+        scrollWeatherButton.snp.makeConstraints() {
+            $0.top.equalTo(scrollWeatherSearchBar.snp.bottom).offset(24)
+            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.height.equalTo(117)
         }
     }
 }
