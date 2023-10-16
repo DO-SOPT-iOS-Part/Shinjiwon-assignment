@@ -86,8 +86,7 @@ class WeatherListScrollView: UIView {
         
         scrollWeatherSearchBar.snp.makeConstraints() {
             $0.top.equalTo(scrollWeatherLabel.snp.bottom).offset(8)
-            $0.centerX.equalToSuperview()
-            $0.leading.equalTo(scrollWeatherLabel.snp.leading)
+            $0.leading.trailing.equalToSuperview().inset(10)
             $0.height.equalTo(40)
         }
         
