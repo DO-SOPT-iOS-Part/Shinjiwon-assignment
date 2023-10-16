@@ -7,17 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C0069C32ADD6A9E00B933A2 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0069C22ADD6A9E00B933A2 /* UIColor+.swift */; };
+		2C0069C62ADD6AB200B933A2 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 2C0069C52ADD6AB200B933A2 /* Then */; };
+		2C0069C92ADD6AB700B933A2 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2C0069C82ADD6AB700B933A2 /* SnapKit */; };
+		2C0069CB2ADD6AB700B933A2 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 2C0069CA2ADD6AB700B933A2 /* SnapKit-Dynamic */; };
+		2C0069CD2ADD6AD400B933A2 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0069CC2ADD6AD400B933A2 /* UIView+.swift */; };
+		2C0069CF2ADD6AF300B933A2 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0069CE2ADD6AF300B933A2 /* String+.swift */; };
+		2C0069D12ADD6B2300B933A2 /* UITableViewHeaderFooterView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0069D02ADD6B2300B933A2 /* UITableViewHeaderFooterView+.swift */; };
+		2C0069D32ADD6B4D00B933A2 /* UITableViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0069D22ADD6B4C00B933A2 /* UITableViewCell+.swift */; };
+		2C0069D52ADD6B6D00B933A2 /* UICollectionViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0069D42ADD6B6D00B933A2 /* UICollectionViewCell+.swift */; };
 		2C2EFE2E2ADD5E7E00B2A2EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2EFE2D2ADD5E7E00B2A2EC /* AppDelegate.swift */; };
 		2C2EFE302ADD5E7E00B2A2EC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2EFE2F2ADD5E7E00B2A2EC /* SceneDelegate.swift */; };
-		2C2EFE322ADD5E7E00B2A2EC /* MainnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2EFE312ADD5E7E00B2A2EC /* MainnViewController.swift */; };
+		2C2EFE322ADD5E7E00B2A2EC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2EFE312ADD5E7E00B2A2EC /* MainViewController.swift */; };
 		2C2EFE372ADD5E8000B2A2EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C2EFE362ADD5E8000B2A2EC /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C0069C22ADD6A9E00B933A2 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		2C0069CC2ADD6AD400B933A2 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		2C0069CE2ADD6AF300B933A2 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		2C0069D02ADD6B2300B933A2 /* UITableViewHeaderFooterView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewHeaderFooterView+.swift"; sourceTree = "<group>"; };
+		2C0069D22ADD6B4C00B933A2 /* UITableViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+.swift"; sourceTree = "<group>"; };
+		2C0069D42ADD6B6D00B933A2 /* UICollectionViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+.swift"; sourceTree = "<group>"; };
 		2C2EFE2A2ADD5E7E00B2A2EC /* Jiwon's Weather Forecast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jiwon's Weather Forecast.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C2EFE2D2ADD5E7E00B2A2EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C2EFE2F2ADD5E7E00B2A2EC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2C2EFE312ADD5E7E00B2A2EC /* MainnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainnViewController.swift; sourceTree = "<group>"; };
+		2C2EFE312ADD5E7E00B2A2EC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2C2EFE362ADD5E8000B2A2EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C2EFE3B2ADD5E8000B2A2EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C2EFE442ADD692400B2A2EC /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
@@ -32,6 +47,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C0069C62ADD6AB200B933A2 /* Then in Frameworks */,
+				2C0069C92ADD6AB700B933A2 /* SnapKit in Frameworks */,
+				2C0069CB2ADD6AB700B933A2 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +77,8 @@
 			children = (
 				2C2EFE2D2ADD5E7E00B2A2EC /* AppDelegate.swift */,
 				2C2EFE2F2ADD5E7E00B2A2EC /* SceneDelegate.swift */,
-				2C2EFE312ADD5E7E00B2A2EC /* MainnViewController.swift */,
+				2C2EFE312ADD5E7E00B2A2EC /* MainViewController.swift */,
+				2C2EFE492ADD69D900B2A2EC /* Extension */,
 				2C2EFE432ADD690B00B2A2EC /* Fonts */,
 				2C2EFE362ADD5E8000B2A2EC /* Assets.xcassets */,
 				2C2EFE3B2ADD5E8000B2A2EC /* Info.plist */,
@@ -79,6 +98,19 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		2C2EFE492ADD69D900B2A2EC /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				2C0069CE2ADD6AF300B933A2 /* String+.swift */,
+				2C0069C22ADD6A9E00B933A2 /* UIColor+.swift */,
+				2C0069CC2ADD6AD400B933A2 /* UIView+.swift */,
+				2C0069D22ADD6B4C00B933A2 /* UITableViewCell+.swift */,
+				2C0069D42ADD6B6D00B933A2 /* UICollectionViewCell+.swift */,
+				2C0069D02ADD6B2300B933A2 /* UITableViewHeaderFooterView+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -95,6 +127,11 @@
 			dependencies = (
 			);
 			name = "Jiwon's Weather Forecast";
+			packageProductDependencies = (
+				2C0069C52ADD6AB200B933A2 /* Then */,
+				2C0069C82ADD6AB700B933A2 /* SnapKit */,
+				2C0069CA2ADD6AB700B933A2 /* SnapKit-Dynamic */,
+			);
 			productName = "Jiwon's Weather Forecast";
 			productReference = 2C2EFE2A2ADD5E7E00B2A2EC /* Jiwon's Weather Forecast.app */;
 			productType = "com.apple.product-type.application";
@@ -123,6 +160,10 @@
 				Base,
 			);
 			mainGroup = 2C2EFE212ADD5E7E00B2A2EC;
+			packageReferences = (
+				2C0069C42ADD6AB200B933A2 /* XCRemoteSwiftPackageReference "Then" */,
+				2C0069C72ADD6AB700B933A2 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 2C2EFE2B2ADD5E7E00B2A2EC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -148,9 +189,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C2EFE322ADD5E7E00B2A2EC /* MainnViewController.swift in Sources */,
+				2C2EFE322ADD5E7E00B2A2EC /* MainViewController.swift in Sources */,
+				2C0069D32ADD6B4D00B933A2 /* UITableViewCell+.swift in Sources */,
+				2C0069C32ADD6A9E00B933A2 /* UIColor+.swift in Sources */,
 				2C2EFE2E2ADD5E7E00B2A2EC /* AppDelegate.swift in Sources */,
 				2C2EFE302ADD5E7E00B2A2EC /* SceneDelegate.swift in Sources */,
+				2C0069D52ADD6B6D00B933A2 /* UICollectionViewCell+.swift in Sources */,
+				2C0069CF2ADD6AF300B933A2 /* String+.swift in Sources */,
+				2C0069CD2ADD6AD400B933A2 /* UIView+.swift in Sources */,
+				2C0069D12ADD6B2300B933A2 /* UITableViewHeaderFooterView+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +399,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2C0069C42ADD6AB200B933A2 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		2C0069C72ADD6AB700B933A2 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2C0069C52ADD6AB200B933A2 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C0069C42ADD6AB200B933A2 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		2C0069C82ADD6AB700B933A2 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C0069C72ADD6AB700B933A2 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		2C0069CA2ADD6AB700B933A2 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C0069C72ADD6AB700B933A2 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2C2EFE222ADD5E7E00B2A2EC /* Project object */;
 }
