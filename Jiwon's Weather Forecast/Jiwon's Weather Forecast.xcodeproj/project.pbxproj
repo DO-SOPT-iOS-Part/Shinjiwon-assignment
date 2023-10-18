@@ -29,6 +29,8 @@
 		2C528C2F2ADDA19100383C90 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2C528C2E2ADDA19100383C90 /* SF-Pro-Display-Medium.otf */; };
 		2C528C312ADDB69900383C90 /* WeatherBaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C528C302ADDB69900383C90 /* WeatherBaseButton.swift */; };
 		2C528C332ADDBE8800383C90 /* SF-Pro-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2C528C322ADDBE8800383C90 /* SF-Pro-Display-Thin.otf */; };
+		2CEAFFDB2ADFA56300BB21C0 /* WeatherEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAFFDA2ADFA56300BB21C0 /* WeatherEnum.swift */; };
+		2CEAFFDD2ADFA6B900BB21C0 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAFFDC2ADFA6B900BB21C0 /* WeatherData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +55,8 @@
 		2C528C2E2ADDA19100383C90 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
 		2C528C302ADDB69900383C90 /* WeatherBaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherBaseButton.swift; sourceTree = "<group>"; };
 		2C528C322ADDBE8800383C90 /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
+		2CEAFFDA2ADFA56300BB21C0 /* WeatherEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherEnum.swift; sourceTree = "<group>"; };
+		2CEAFFDC2ADFA6B900BB21C0 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +144,8 @@
 				2C2EFE312ADD5E7E00B2A2EC /* WeatherListViewController.swift */,
 				2C528C1E2ADD940100383C90 /* WeatherListScrollView.swift */,
 				2C528C302ADDB69900383C90 /* WeatherBaseButton.swift */,
+				2CEAFFDA2ADFA56300BB21C0 /* WeatherEnum.swift */,
+				2CEAFFDC2ADFA6B900BB21C0 /* WeatherData.swift */,
 			);
 			path = WeatherList;
 			sourceTree = "<group>";
@@ -236,6 +242,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C2EFE322ADD5E7E00B2A2EC /* WeatherListViewController.swift in Sources */,
+				2CEAFFDD2ADFA6B900BB21C0 /* WeatherData.swift in Sources */,
+				2CEAFFDB2ADFA56300BB21C0 /* WeatherEnum.swift in Sources */,
 				2C528C232ADD95A200383C90 /* Image.swift in Sources */,
 				2C0069D32ADD6B4D00B933A2 /* UITableViewCell+.swift in Sources */,
 				2C0069C32ADD6A9E00B933A2 /* UIColor+.swift in Sources */,

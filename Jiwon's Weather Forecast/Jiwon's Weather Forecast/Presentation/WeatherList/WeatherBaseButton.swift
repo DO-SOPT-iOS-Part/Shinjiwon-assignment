@@ -15,12 +15,12 @@ class WeatherBaseButton: UIButton {
     // MARK: - Properties
     
     // MARK: - UI Components
-    var myPlaceLabel = UILabel()
     var placeLabel = UILabel()
+    var timeLabel = UILabel()
     var weatherLabel = UILabel()
-    var tempLabel = UILabel()
-    var highestTempLabel = UILabel()
-    var lowestTempLabel = UILabel()
+    var currentTemLabel = UILabel()
+    var highTemLabel = UILabel()
+    var lowTemLabel = UILabel()
     
     
     // MARK: - Life Cycle
@@ -39,74 +39,70 @@ class WeatherBaseButton: UIButton {
     
     func setStyle() {
         self.setBackgroundImage(Image.weatherSmall, for: .normal)
-        myPlaceLabel.do {
-            $0.text = "나의 위치"
+        placeLabel.do {
             $0.font = .SFPro(.bold, size: 24)
             $0.textColor = .white
         }
         
-        placeLabel.do {
-            $0.text = "공주"
+        timeLabel.do {
             $0.font = .SFPro(.regular, size: 17)
             $0.textColor = .white
         }
+        
         weatherLabel.do {
-            $0.text = "공주"
             $0.font = .SFPro(.regular, size: 16)
             $0.textColor = .white
         }
         
-        tempLabel.do {
-            $0.text = "21°"
+        currentTemLabel.do {
             $0.font = .SFPro(.regular, size: 52)
             $0.textColor = .white
         }
-        highestTempLabel.do {
-            $0.text = "최고:22°"
+        highTemLabel.do {
             $0.font = .SFPro(.regular, size: 15)
             $0.textColor = .white
         }
         
-        lowestTempLabel.do {
-            $0.text = "최저:10°"
+        lowTemLabel.do {
             $0.font = .SFPro(.regular, size: 15)
             $0.textColor = .white
         }
     }
     
     func setHierarchy() {
-        self.addSubviews(myPlaceLabel, placeLabel, weatherLabel, tempLabel, lowestTempLabel, highestTempLabel)
+        self.addSubviews(placeLabel, timeLabel, weatherLabel, currentTemLabel, lowTemLabel, highTemLabel)
     }
     
     func setLayout() {
-        myPlaceLabel.snp.makeConstraints() {
+        placeLabel.snp.makeConstraints() {
             $0.top.equalToSuperview().inset(10)
             $0.leading.equalToSuperview().inset(16)
         }
         
-        placeLabel.snp.makeConstraints() {
-            $0.top.equalTo(myPlaceLabel.snp.bottom).offset(2)
-            $0.leading.equalTo(myPlaceLabel.snp.leading)
+        timeLabel.snp.makeConstraints() {
+            $0.top.equalTo(placeLabel.snp.bottom).offset(2)
+            $0.leading.equalTo(placeLabel.snp.leading)
             
         }
+        
         weatherLabel.snp.makeConstraints() {
             $0.bottom.equalToSuperview().inset(10)
-            $0.leading.equalTo(myPlaceLabel.snp.leading)
+            $0.leading.equalTo(placeLabel.snp.leading)
         }
         
-        tempLabel.snp.makeConstraints() {
+        currentTemLabel.snp.makeConstraints() {
             $0.top.equalToSuperview().inset(4)
             $0.trailing.equalToSuperview().inset(16)
         }
         
-        lowestTempLabel.snp.makeConstraints() {
+        lowTemLabel.snp.makeConstraints() {
             $0.bottom.equalToSuperview().inset(10)
             $0.trailing.equalToSuperview().inset(16)
         }
         
-        highestTempLabel.snp.makeConstraints() {
+        highTemLabel.snp.makeConstraints() {
             $0.bottom.equalToSuperview().inset(10)
-            $0.trailing.equalTo(lowestTempLabel.snp.leading).offset(-6)
+            $0.trailing.equalTo(lowTemLabel.snp.leading).offset(-6)
         }
     }
 }

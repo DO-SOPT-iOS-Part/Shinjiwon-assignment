@@ -21,8 +21,14 @@ class WeatherListScrollView: UIView {
     var scrollContentView = UIView()
     var scrollWeatherLabel = UILabel()
     var scrollWeatherSearchBar = UISearchBar()
-    var scrollWeatherButton = WeatherBaseButton()
+    
+    var scrollWeatherButton0 = WeatherBaseButton()
+    var scrollWeatherButton1 = WeatherBaseButton()
+    var scrollWeatherButton2 = WeatherBaseButton()
+    var scrollWeatherButton3 = WeatherBaseButton()
+    
     var scrollBox = UIView()
+
     
     // MARK: - Life Cycle
     override init(frame: CGRect) {
@@ -31,6 +37,7 @@ class WeatherListScrollView: UIView {
         style()
         hierarchy()
         layout()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -64,17 +71,28 @@ class WeatherListScrollView: UIView {
             $0.setImage(UIImage(), for: UISearchBar.Icon.clear, state: .normal)
         }
         
+        let weatherButton = [scrollWeatherButton0, scrollWeatherButton1, scrollWeatherButton2, scrollWeatherButton3]
+        
+        for i in 0...3 {
+            var button = weatherButton[i]
+            button.placeLabel.text = weatherArry[i].place
+            button.timeLabel.text = weatherArry[i].time
+            button.weatherLabel.text = weatherArry[i].weather
+            button.currentTemLabel.text = weatherArry[i].currentTem + "°"
+            button.highTemLabel.text = "최고:" + weatherArry[i].highTem + "°"
+            button.lowTemLabel.text = "최저:" + weatherArry[i].lowTem + "°"
+        }
+        
         scrollBox.do {
             $0.backgroundColor = .black
         }
-        
     }
     
     private func hierarchy() {
         self.addSubview(scrollView)
         scrollView.addSubview(scrollContentView)
-        scrollContentView.addSubviews(scrollWeatherLabel, scrollWeatherSearchBar, scrollBox)
-        scrollContentView.addSubviews(scrollWeatherButton)
+        scrollContentView.addSubviews(scrollWeatherLabel, scrollWeatherSearchBar)
+        scrollContentView.addSubviews(scrollWeatherButton0,scrollWeatherButton1,scrollWeatherButton2,scrollWeatherButton3, scrollBox)
     }
     
     private func layout() {
@@ -98,17 +116,28 @@ class WeatherListScrollView: UIView {
             $0.height.equalTo(40)
         }
         
-        scrollBox.snp.makeConstraints() {
-            $0.top.equalTo(scrollWeatherButton.snp.bottom).offset(10)
-            $0.width.equalToSuperview()
-            $0.centerX.equalToSuperview()
-            $0.height.equalTo(1000)
-        }
-        
-        scrollWeatherButton.snp.makeConstraints() {
+        scrollWeatherButton0.snp.makeConstraints() {
             $0.top.equalTo(scrollWeatherSearchBar.snp.bottom).offset(24)
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.height.equalTo(117)
+        }
+        
+        let weatherButton = [scrollWeatherButton0, scrollWeatherButton1, scrollWeatherButton2, scrollWeatherButton3]
+        for i in 1...3 {
+            var button = weatherButton[i]
+            var exbutton = weatherButton[i-1]
+            button.snp.makeConstraints() {
+                $0.top.equalTo(exbutton.snp.bottom).offset(24)
+                $0.leading.trailing.equalToSuperview().inset(20)
+                $0.height.equalTo(117)
+            }
+        }
+        
+        scrollBox.snp.makeConstraints() {
+            $0.top.equalTo(scrollWeatherButton3.snp.bottom).offset(10)
+            $0.width.equalToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(500)
         }
     }
 }
