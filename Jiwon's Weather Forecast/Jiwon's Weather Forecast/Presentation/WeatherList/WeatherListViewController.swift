@@ -43,7 +43,6 @@ class WeatherListViewController: UIViewController {
     
     private func delegate() {
         rootView.scrollWeatherSearchBar.delegate = self
-        rootView.scrollWeatherSearchBar.searchTextField.delegate = self
     }
     
     //MARK: - Action Method
@@ -56,7 +55,6 @@ extension WeatherListViewController: UISearchBarDelegate {
         print("cancel")
         rootView.scrollWeatherSearchBar.searchTextField.text = ""
         rootView.endEditing(true)
-
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -64,21 +62,18 @@ extension WeatherListViewController: UISearchBarDelegate {
         rootView.endEditing(true)
         
     }
-}
-
-extension WeatherListViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        print("💗")
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         rootView.scrollWeatherLabel.isHidden = true
+        
+        //이동 위치 구체적 설정 + 키보드 비동기처리 해야 함
         rootView.scrollView.setContentOffset(CGPoint(x: 0 ,y: 80), animated: true)
         rootView.scrollWeatherSearchBar.showsCancelButton = true
     }
-
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         rootView.scrollWeatherLabel.isHidden = false
         rootView.scrollView.setContentOffset(CGPoint(x: 0 ,y: 0), animated: true)
         rootView.scrollWeatherSearchBar.showsCancelButton = false
     }
 }
-
-
