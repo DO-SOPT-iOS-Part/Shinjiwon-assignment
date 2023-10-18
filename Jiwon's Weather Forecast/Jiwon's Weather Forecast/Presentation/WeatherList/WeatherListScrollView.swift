@@ -17,15 +17,15 @@ class WeatherListScrollView: UIView {
                                                                      NSAttributedString.Key.foregroundColor: UIColor(hex: 0x8C8C8C)])
     
     // MARK: - UI Components
-    var scrollView = UIScrollView()
-    var scrollContentView = UIView()
-    var scrollWeatherLabel = UILabel()
-    var scrollWeatherSearchBar = UISearchBar()
+    var listScrollView = UIScrollView()
+    var listContentView = UIView()
+    var listWeatherLabel = UILabel()
+    var listWeatherSearchBar = UISearchBar()
     
-    var scrollWeatherButton0 = WeatherBaseButton()
-    var scrollWeatherButton1 = WeatherBaseButton()
-    var scrollWeatherButton2 = WeatherBaseButton()
-    var scrollWeatherButton3 = WeatherBaseButton()
+    var listWeatherButton0 = WeatherBaseButton()
+    var listWeatherButton1 = WeatherBaseButton()
+    var listWeatherButton2 = WeatherBaseButton()
+    var listWeatherButton3 = WeatherBaseButton()
     
     var scrollBox = UIView()
 
@@ -47,20 +47,20 @@ class WeatherListScrollView: UIView {
     // MARK: - Custom Method
     private func style() {
         
-        scrollView.do {
+        listScrollView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.isUserInteractionEnabled = true
             $0.isScrollEnabled = true
             $0.showsVerticalScrollIndicator = true
         }
         
-        scrollWeatherLabel.do {
+        listWeatherLabel.do {
             $0.text = "날씨"
             $0.font = .SFPro(.bold, size: 36)
             $0.textColor = .white
         }
         
-        scrollWeatherSearchBar.do {
+        listWeatherSearchBar.do {
             $0.searchTextField.backgroundColor = UIColor(hex: 0x1A1A1A)
             $0.searchTextField.leftView?.tintColor = UIColor(hex: 0x8C8C8C)
             $0.searchTextField.attributedPlaceholder = attributedString
@@ -71,7 +71,7 @@ class WeatherListScrollView: UIView {
             $0.setImage(UIImage(), for: UISearchBar.Icon.clear, state: .normal)
         }
         
-        let weatherButton = [scrollWeatherButton0, scrollWeatherButton1, scrollWeatherButton2, scrollWeatherButton3]
+        let weatherButton = [listWeatherButton0, listWeatherButton1, listWeatherButton2, listWeatherButton3]
         
         for i in 0...3 {
             var button = weatherButton[i]
@@ -89,40 +89,40 @@ class WeatherListScrollView: UIView {
     }
     
     private func hierarchy() {
-        self.addSubview(scrollView)
-        scrollView.addSubview(scrollContentView)
-        scrollContentView.addSubviews(scrollWeatherLabel, scrollWeatherSearchBar)
-        scrollContentView.addSubviews(scrollWeatherButton0,scrollWeatherButton1,scrollWeatherButton2,scrollWeatherButton3, scrollBox)
+        self.addSubview(listScrollView)
+        listScrollView.addSubview(listContentView)
+        listContentView.addSubviews(listWeatherLabel, listWeatherSearchBar)
+        listContentView.addSubviews(listWeatherButton0,listWeatherButton1,listWeatherButton2,listWeatherButton3, scrollBox)
     }
     
     private func layout() {
-        scrollView.snp.makeConstraints() {
+        listScrollView.snp.makeConstraints() {
             $0.edges.equalToSuperview()
             $0.bottom.equalTo(scrollBox.snp.bottom)
         }
         
-        scrollContentView.snp.makeConstraints() {
+        listContentView.snp.makeConstraints() {
             $0.top.bottom.width.equalToSuperview()
         }
         
-        scrollWeatherLabel.snp.makeConstraints() {
+        listWeatherLabel.snp.makeConstraints() {
             $0.top.equalToSuperview().inset(97)
             $0.leading.equalToSuperview().inset(20)
         }
         
-        scrollWeatherSearchBar.snp.makeConstraints() {
-            $0.top.equalTo(scrollWeatherLabel.snp.bottom).offset(8)
+        listWeatherSearchBar.snp.makeConstraints() {
+            $0.top.equalTo(listWeatherLabel.snp.bottom).offset(8)
             $0.leading.trailing.equalToSuperview().inset(10)
             $0.height.equalTo(40)
         }
         
-        scrollWeatherButton0.snp.makeConstraints() {
-            $0.top.equalTo(scrollWeatherSearchBar.snp.bottom).offset(24)
+        listWeatherButton0.snp.makeConstraints() {
+            $0.top.equalTo(listWeatherSearchBar.snp.bottom).offset(24)
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.height.equalTo(117)
         }
         
-        let weatherButton = [scrollWeatherButton0, scrollWeatherButton1, scrollWeatherButton2, scrollWeatherButton3]
+        let weatherButton = [listWeatherButton0, listWeatherButton1, listWeatherButton2, listWeatherButton3]
         for i in 1...3 {
             var button = weatherButton[i]
             var exbutton = weatherButton[i-1]
@@ -134,7 +134,7 @@ class WeatherListScrollView: UIView {
         }
         
         scrollBox.snp.makeConstraints() {
-            $0.top.equalTo(scrollWeatherButton3.snp.bottom).offset(10)
+            $0.top.equalTo(listWeatherButton3.snp.bottom).offset(10)
             $0.width.equalToSuperview()
             $0.centerX.equalToSuperview()
             $0.height.equalTo(500)

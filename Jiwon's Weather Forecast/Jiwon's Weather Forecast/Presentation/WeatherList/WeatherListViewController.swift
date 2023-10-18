@@ -42,7 +42,7 @@ class WeatherListViewController: UIViewController {
     }
     
     private func delegate() {
-        rootView.scrollWeatherSearchBar.delegate = self
+        rootView.listWeatherSearchBar.delegate = self
     }
     
     //MARK: - Action Method
@@ -53,7 +53,7 @@ class WeatherListViewController: UIViewController {
 extension WeatherListViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         print("cancel")
-        rootView.scrollWeatherSearchBar.searchTextField.text = ""
+        rootView.listWeatherSearchBar.searchTextField.text = ""
         rootView.endEditing(true)
     }
     
@@ -64,16 +64,16 @@ extension WeatherListViewController: UISearchBarDelegate {
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        rootView.scrollWeatherLabel.isHidden = true
+        rootView.listWeatherLabel.isHidden = true
         
         //이동 위치 구체적 설정 + 키보드 비동기처리 해야 함
-        rootView.scrollView.setContentOffset(CGPoint(x: 0 ,y: 80), animated: true)
-        rootView.scrollWeatherSearchBar.showsCancelButton = true
+        rootView.listScrollView.setContentOffset(CGPoint(x: 0 ,y: 80), animated: true)
+        rootView.listWeatherSearchBar.showsCancelButton = true
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        rootView.scrollWeatherLabel.isHidden = false
-        rootView.scrollView.setContentOffset(CGPoint(x: 0 ,y: 0), animated: true)
-        rootView.scrollWeatherSearchBar.showsCancelButton = false
+        rootView.listWeatherLabel.isHidden = false
+        rootView.listScrollView.setContentOffset(CGPoint(x: 0 ,y: 0), animated: true)
+        rootView.listWeatherSearchBar.showsCancelButton = false
     }
 }
