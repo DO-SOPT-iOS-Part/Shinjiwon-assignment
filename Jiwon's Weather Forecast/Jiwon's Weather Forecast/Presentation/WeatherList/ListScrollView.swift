@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WeatherListScrollView: UIView {
+class ListScrollView: UIView {
     
     // MARK: - Properties
     let placeholder: String = "도시 또는 공항 검색"
@@ -22,10 +22,10 @@ class WeatherListScrollView: UIView {
     var listWeatherLabel = UILabel()
     var listWeatherSearchBar = UISearchBar()
     
-    var listWeatherButton0 = WeatherBaseButton()
-    var listWeatherButton1 = WeatherBaseButton()
-    var listWeatherButton2 = WeatherBaseButton()
-    var listWeatherButton3 = WeatherBaseButton()
+    var listWeatherButton0 = ListBaseButton()
+    var listWeatherButton1 = ListBaseButton()
+    var listWeatherButton2 = ListBaseButton()
+    var listWeatherButton3 = ListBaseButton()
     
     var scrollBox = UIView()
 
@@ -75,12 +75,12 @@ class WeatherListScrollView: UIView {
         
         for i in 0...3 {
             var button = weatherButton[i]
-            button.placeLabel.text = weatherArry[i].place
-            button.timeLabel.text = weatherArry[i].time
-            button.weatherLabel.text = weatherArry[i].weather
-            button.currentTemLabel.text = weatherArry[i].currentTem + "°"
-            button.highTemLabel.text = "최고:" + weatherArry[i].highTem + "°"
-            button.lowTemLabel.text = "최저:" + weatherArry[i].lowTem + "°"
+            button.placeLabel.text = listData[i].place
+            button.timeLabel.text = listData[i].time
+            button.weatherLabel.text = listData[i].weather
+            button.currentTemLabel.text = listData[i].currentTem + "°"
+            button.highTemLabel.text = "최고:" + listData[i].highTem + "°"
+            button.lowTemLabel.text = "최저:" + listData[i].lowTem + "°"
         }
         
         scrollBox.do {

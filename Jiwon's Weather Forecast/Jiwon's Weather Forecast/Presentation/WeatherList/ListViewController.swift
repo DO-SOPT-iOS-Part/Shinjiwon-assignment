@@ -10,13 +10,13 @@ import UIKit
 import SnapKit
 import Then
 
-class WeatherListViewController: UIViewController {
+class ListViewController: UIViewController {
     
     // MARK: - Properties
     
     // MARK: - UI Components
     
-    private let rootView = WeatherListScrollView()
+    private let rootView = ListScrollView()
     
     // MARK: - Life Cycle
     override func loadView() {
@@ -50,7 +50,7 @@ class WeatherListViewController: UIViewController {
 }
 
 // MARK: - UISearchBarDelegate
-extension WeatherListViewController: UISearchBarDelegate {
+extension ListViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         print("cancel")
         rootView.listWeatherSearchBar.searchTextField.text = ""

@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-class WeatherDetailView: UIView {
+class DetailView: UIView {
     
     // MARK: - Properties
     
@@ -19,7 +19,7 @@ class WeatherDetailView: UIView {
     var detailScrollView = UIScrollView()
     var detailContentView = UIView()
     var detailInfoView = DetailInfoView()
-    var detailListScrollView = DetailListScrollView()
+    var detailListScrollView = DetailLiveScrollView()
     
     var scrollbox = UIView()
     

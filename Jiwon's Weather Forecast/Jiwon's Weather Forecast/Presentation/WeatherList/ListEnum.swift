@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Weather {
+struct List {
     let place : String
     let time : String
     let weather : String

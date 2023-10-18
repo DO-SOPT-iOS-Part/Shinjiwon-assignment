@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailCellBaseView: UIView {
+class DetailLiveBaseView: UIView {
     
     // MARK: - UI Components
     var detailTime = UILabel()

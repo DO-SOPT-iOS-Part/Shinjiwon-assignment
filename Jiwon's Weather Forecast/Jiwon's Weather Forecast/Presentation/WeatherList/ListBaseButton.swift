@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-class WeatherBaseButton: UIButton {
+class ListBaseButton: UIButton {
     
     // MARK: - Properties
     

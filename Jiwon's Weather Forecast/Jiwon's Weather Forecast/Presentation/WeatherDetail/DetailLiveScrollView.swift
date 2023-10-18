@@ -10,27 +10,27 @@ import UIKit
 import SnapKit
 import Then
 
-class DetailListScrollView: UIView {
+class DetailLiveScrollView: UIView {
     
     // MARK: - Properties
     let dataNum = detailData.count
     
     // MARK: - UI Components
-    let detailListLabel = UILabel()
-    let detailListBar = UIView()
-    var detailListScrollView = UIScrollView()
-    var detailListContentView = UIView()
+    let detailLiveLabel = UILabel()
+    let detailLiveBar = UIView()
+    var detailLiveScrollView = UIScrollView()
+    var detailLiveContentView = UIView()
     
-    var detailListWeatherView0 = DetailCellBaseView()
-    var detailListWeatherView1 = DetailCellBaseView()
-    var detailListWeatherView2 = DetailCellBaseView()
-    var detailListWeatherView3 = DetailCellBaseView()
-    var detailListWeatherView4 = DetailCellBaseView()
-    var detailListWeatherView5 = DetailCellBaseView()
-    var detailListWeatherView6 = DetailCellBaseView()
-    var detailListWeatherView7 = DetailCellBaseView()
-    var detailListWeatherView8 = DetailCellBaseView()
-    var detailListWeatherView9 = DetailCellBaseView()
+    var detailLiveView0 = DetailLiveBaseView()
+    var detailLiveView1 = DetailLiveBaseView()
+    var detailLiveView2 = DetailLiveBaseView()
+    var detailLiveView3 = DetailLiveBaseView()
+    var detailLiveView4 = DetailLiveBaseView()
+    var detailLiveView5 = DetailLiveBaseView()
+    var detailLiveView6 = DetailLiveBaseView()
+    var detailLiveView7 = DetailLiveBaseView()
+    var detailLiveView8 = DetailLiveBaseView()
+    var detailLiveView9 = DetailLiveBaseView()
     
     // MARK: - Life Cycle
     override init(frame: CGRect) {
@@ -47,26 +47,26 @@ class DetailListScrollView: UIView {
     
     // MARK: - Custom Method
     private func style() {
-        detailListLabel.do {
+        detailLiveLabel.do {
             $0.text = "08:00~09:00에 강우 상태가, 18:00에 한때 흐린 상태가 예상됩니다."
             $0.font = .SFPro(.regular, size: 18)
             $0.textColor = .white
             $0.numberOfLines = 0
         }
         
-        detailListBar.do {
+        detailLiveBar.do {
             $0.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
             
         }
         
-        detailListScrollView.do {
+        detailLiveScrollView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.isUserInteractionEnabled = true
             $0.isScrollEnabled = true
             $0.showsHorizontalScrollIndicator = true
         }
         
-        let weatherView = [detailListWeatherView0, detailListWeatherView1, detailListWeatherView2, detailListWeatherView3, detailListWeatherView4, detailListWeatherView5, detailListWeatherView6, detailListWeatherView7, detailListWeatherView8, detailListWeatherView9]
+        let weatherView = [detailLiveView0, detailLiveView1, detailLiveView2, detailLiveView3, detailLiveView4, detailLiveView5, detailLiveView6, detailLiveView7, detailLiveView8, detailLiveView9]
         
         for i in 0...9 {
             var view = weatherView[i]
@@ -78,44 +78,44 @@ class DetailListScrollView: UIView {
     }
     
     private func hierarchy() {
-        self.addSubviews(detailListLabel, detailListBar, detailListScrollView)
-        detailListScrollView.addSubview(detailListContentView)
+        self.addSubviews(detailLiveLabel, detailLiveBar, detailLiveScrollView)
+        detailLiveScrollView.addSubview(detailLiveContentView)
         
-        let weatherView = [detailListWeatherView0, detailListWeatherView1, detailListWeatherView2, detailListWeatherView3, detailListWeatherView4, detailListWeatherView5, detailListWeatherView6, detailListWeatherView7, detailListWeatherView8, detailListWeatherView9]
+        let weatherView = [detailLiveView0, detailLiveView1, detailLiveView2, detailLiveView3, detailLiveView4, detailLiveView5, detailLiveView6, detailLiveView7, detailLiveView8, detailLiveView9]
         
         for i in 0...9 {
             var view = weatherView[i]
-            detailListContentView.addSubview(view)
+            detailLiveContentView.addSubview(view)
         }
     }
     
     private func layout() {
-        detailListLabel.snp.makeConstraints() {
+        detailLiveLabel.snp.makeConstraints() {
             $0.top.equalToSuperview().inset(10)
             $0.leading.equalToSuperview().inset(15)
             $0.trailing.equalToSuperview().inset(15)
         }
         
-        detailListBar.snp.makeConstraints() {
-            $0.top.equalTo(detailListLabel.snp.bottom).offset(11)
+        detailLiveBar.snp.makeConstraints() {
+            $0.top.equalTo(detailLiveLabel.snp.bottom).offset(11)
             $0.leading.trailing.equalToSuperview().inset(15)
             $0.height.equalTo(0.2)
         }
         
-        detailListScrollView.snp.makeConstraints() {
-            $0.top.equalTo(detailListBar.snp.bottom)
+        detailLiveScrollView.snp.makeConstraints() {
+            $0.top.equalTo(detailLiveBar.snp.bottom)
             $0.bottom.equalToSuperview()
             $0.leading.equalToSuperview()
             $0.width.equalTo(15 + dataNum*44 + (dataNum-1)*22)
         }
         
-        detailListContentView.snp.makeConstraints() {
+        detailLiveContentView.snp.makeConstraints() {
             $0.top.bottom.width.equalToSuperview()
         }
         
-        let weatherView = [detailListWeatherView0, detailListWeatherView1, detailListWeatherView2, detailListWeatherView3, detailListWeatherView4, detailListWeatherView5, detailListWeatherView6, detailListWeatherView7, detailListWeatherView8, detailListWeatherView9]
+        let weatherView = [detailLiveView0, detailLiveView1, detailLiveView2, detailLiveView3, detailLiveView4, detailLiveView5, detailLiveView6, detailLiveView7, detailLiveView8, detailLiveView9]
         
-        detailListWeatherView0.snp.makeConstraints() {
+        detailLiveView0.snp.makeConstraints() {
             $0.top.equalToSuperview()
             $0.bottom.equalToSuperview()
             $0.leading.equalToSuperview().inset(15)

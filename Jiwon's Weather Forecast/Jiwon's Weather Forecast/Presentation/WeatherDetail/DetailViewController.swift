@@ -7,13 +7,13 @@
 
 import UIKit
 
-class WeatherDetailViewController: UIViewController {
+class DetailViewController: UIViewController {
 
     // MARK: - Properties
     
     // MARK: - UI Components
     
-    private let rootView = WeatherDetailView()
+    private let rootView = DetailView()
     
     // MARK: - Life Cycle
     override func loadView() {
