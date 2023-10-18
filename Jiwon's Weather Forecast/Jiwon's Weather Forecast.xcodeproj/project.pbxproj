@@ -33,6 +33,7 @@
 		2CEAFFDD2ADFA6B900BB21C0 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAFFDC2ADFA6B900BB21C0 /* WeatherData.swift */; };
 		2CEAFFE02ADFC6BD00BB21C0 /* WeatherDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAFFDF2ADFC6BD00BB21C0 /* WeatherDetailView.swift */; };
 		2CEAFFE22ADFC6CF00BB21C0 /* WeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAFFE12ADFC6CF00BB21C0 /* WeatherDetailViewController.swift */; };
+		2CEAFFE42ADFD1D100BB21C0 /* WeatherDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAFFE32ADFD1D100BB21C0 /* WeatherDetailInfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		2CEAFFDC2ADFA6B900BB21C0 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		2CEAFFDF2ADFC6BD00BB21C0 /* WeatherDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailView.swift; sourceTree = "<group>"; };
 		2CEAFFE12ADFC6CF00BB21C0 /* WeatherDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewController.swift; sourceTree = "<group>"; };
+		2CEAFFE32ADFD1D100BB21C0 /* WeatherDetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailInfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 			children = (
 				2CEAFFE12ADFC6CF00BB21C0 /* WeatherDetailViewController.swift */,
 				2CEAFFDF2ADFC6BD00BB21C0 /* WeatherDetailView.swift */,
+				2CEAFFE32ADFD1D100BB21C0 /* WeatherDetailInfoView.swift */,
 			);
 			path = WeatherDetail;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				2C2EFE322ADD5E7E00B2A2EC /* WeatherListViewController.swift in Sources */,
 				2CEAFFDD2ADFA6B900BB21C0 /* WeatherData.swift in Sources */,
 				2CEAFFDB2ADFA56300BB21C0 /* WeatherEnum.swift in Sources */,
+				2CEAFFE42ADFD1D100BB21C0 /* WeatherDetailInfoView.swift in Sources */,
 				2C528C232ADD95A200383C90 /* Image.swift in Sources */,
 				2C0069D32ADD6B4D00B933A2 /* UITableViewCell+.swift in Sources */,
 				2C0069C32ADD6A9E00B933A2 /* UIColor+.swift in Sources */,

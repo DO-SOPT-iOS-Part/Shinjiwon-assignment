@@ -15,12 +15,12 @@ class WeatherDetailView: UIView {
     // MARK: - Properties
     
     // MARK: - UI Components
-    var detailPlaceLabel = UILabel()
-    var detailTimeLabel = UILabel()
-    var detailWeatherLabel = UILabel()
-    var detailCurrentTemLabel = UILabel()
-    var detailHighTemLabel = UILabel()
-    var detailLowTemLabel = UILabel()
+    var detailImageView = UIImageView()
+    var detailScrollView = UIScrollView()
+    var detailContentView = UIView()
+    var detailInfoView = DetailInfoView()
+    
+    var scrollbox = UIView()
     
     // MARK: - Life Cycle
     override init(frame: CGRect) {
@@ -37,50 +37,49 @@ class WeatherDetailView: UIView {
     
     // MARK: - Custom Method
     private func style() {
-        detailPlaceLabel.do{
-            
+        detailScrollView.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.isUserInteractionEnabled = true
+            $0.isScrollEnabled = true
+            $0.showsVerticalScrollIndicator = true
         }
-        detailTimeLabel.do {
-            
+        
+        detailImageView.do {
+            $0.image = Image.weatherLarge
         }
-        detailWeatherLabel.do {
-            
-        }
-        detailCurrentTemLabel.do {
-            
-        }
-        detailHighTemLabel.do {
-            
-        }
-        detailLowTemLabel.do {
-            
+        scrollbox.do {
+            $0.backgroundColor = .clear
         }
     }
     
     private func hierarchy() {
-        
+        self.addSubviews(detailImageView,detailScrollView)
+        detailScrollView.addSubview(detailContentView)
+        detailContentView.addSubviews(detailInfoView, scrollbox)
     }
     
     private func layout() {
-        detailPlaceLabel.snp.makeConstraints() {
-            
+        detailImageView.snp.makeConstraints() {
+            $0.edges.equalToSuperview()
         }
-        detailTimeLabel.snp.makeConstraints() {
-            
+        detailScrollView.snp.makeConstraints() {
+            $0.edges.equalToSuperview()
+            $0.bottom.equalTo(scrollbox.snp.bottom)
         }
-        detailWeatherLabel.snp.makeConstraints() {
-            
+        detailContentView.snp.makeConstraints() {
+            $0.centerX.equalToSuperview()
+            $0.top.bottom.leading.trailing.equalToSuperview()
         }
-        detailCurrentTemLabel.snp.makeConstraints() {
-            
+        detailInfoView.snp.makeConstraints() {
+            $0.top.equalToSuperview().inset(78)
+            $0.width.equalToSuperview()
         }
-        detailHighTemLabel.snp.makeConstraints() {
-            
-        }
-        detailLowTemLabel.snp.makeConstraints() {
-            
+        
+        scrollbox.snp.makeConstraints() {
+            $0.top.equalTo(detailInfoView.snp.bottom)
+            $0.width.equalToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(1000)
         }
     }
-    
-    
 }
