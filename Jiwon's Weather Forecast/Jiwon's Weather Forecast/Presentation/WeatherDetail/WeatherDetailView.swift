@@ -19,6 +19,7 @@ class WeatherDetailView: UIView {
     var detailScrollView = UIScrollView()
     var detailContentView = UIView()
     var detailInfoView = DetailInfoView()
+    var detailListScrollView = DetailListScrollView()
     
     var scrollbox = UIView()
     
@@ -47,6 +48,13 @@ class WeatherDetailView: UIView {
         detailImageView.do {
             $0.image = Image.weatherLarge
         }
+        
+        detailListScrollView.do {
+            $0.layer.cornerRadius = 15
+            $0.layer.borderWidth = 0.2
+            $0.layer.borderColor = UIColor(white: 1.0, alpha: 0.4).cgColor
+        }
+        
         scrollbox.do {
             $0.backgroundColor = .clear
         }
@@ -55,28 +63,38 @@ class WeatherDetailView: UIView {
     private func hierarchy() {
         self.addSubviews(detailImageView,detailScrollView)
         detailScrollView.addSubview(detailContentView)
-        detailContentView.addSubviews(detailInfoView, scrollbox)
+        detailContentView.addSubviews(detailInfoView, detailListScrollView, scrollbox)
     }
     
     private func layout() {
         detailImageView.snp.makeConstraints() {
             $0.edges.equalToSuperview()
         }
+        
         detailScrollView.snp.makeConstraints() {
             $0.edges.equalToSuperview()
             $0.bottom.equalTo(scrollbox.snp.bottom)
         }
+        
         detailContentView.snp.makeConstraints() {
             $0.centerX.equalToSuperview()
             $0.top.bottom.leading.trailing.equalToSuperview()
         }
+        
         detailInfoView.snp.makeConstraints() {
-            $0.top.equalToSuperview().inset(78)
+            $0.top.equalToSuperview().inset(34)
             $0.width.equalToSuperview()
+            $0.bottom.equalTo(detailInfoView.detailHighTemLabel.snp.bottom)
+        }
+        
+        detailListScrollView.snp.makeConstraints() {
+            $0.top.equalTo(detailInfoView.snp.bottom).offset(44)
+            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.height.equalTo(212)
         }
         
         scrollbox.snp.makeConstraints() {
-            $0.top.equalTo(detailInfoView.snp.bottom)
+            $0.top.equalTo(detailListScrollView.snp.bottom)
             $0.width.equalToSuperview()
             $0.centerX.equalToSuperview()
             $0.height.equalTo(1000)

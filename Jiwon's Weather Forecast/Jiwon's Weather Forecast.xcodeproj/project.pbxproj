@@ -34,6 +34,10 @@
 		2CEAFFE02ADFC6BD00BB21C0 /* WeatherDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAFFDF2ADFC6BD00BB21C0 /* WeatherDetailView.swift */; };
 		2CEAFFE22ADFC6CF00BB21C0 /* WeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAFFE12ADFC6CF00BB21C0 /* WeatherDetailViewController.swift */; };
 		2CEAFFE42ADFD1D100BB21C0 /* WeatherDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAFFE32ADFD1D100BB21C0 /* WeatherDetailInfoView.swift */; };
+		2CEAFFE62ADFD34B00BB21C0 /* WeatherDetailListScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAFFE52ADFD34B00BB21C0 /* WeatherDetailListScrollView.swift */; };
+		2CEAFFE82AE0268200BB21C0 /* DetailEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAFFE72AE0268200BB21C0 /* DetailEnum.swift */; };
+		2CEAFFEA2AE0281A00BB21C0 /* DetailData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAFFE92AE0281A00BB21C0 /* DetailData.swift */; };
+		2CEAFFEC2AE029F500BB21C0 /* DetailCellBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAFFEB2AE029F500BB21C0 /* DetailCellBaseView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +67,10 @@
 		2CEAFFDF2ADFC6BD00BB21C0 /* WeatherDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailView.swift; sourceTree = "<group>"; };
 		2CEAFFE12ADFC6CF00BB21C0 /* WeatherDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewController.swift; sourceTree = "<group>"; };
 		2CEAFFE32ADFD1D100BB21C0 /* WeatherDetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailInfoView.swift; sourceTree = "<group>"; };
+		2CEAFFE52ADFD34B00BB21C0 /* WeatherDetailListScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailListScrollView.swift; sourceTree = "<group>"; };
+		2CEAFFE72AE0268200BB21C0 /* DetailEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEnum.swift; sourceTree = "<group>"; };
+		2CEAFFE92AE0281A00BB21C0 /* DetailData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailData.swift; sourceTree = "<group>"; };
+		2CEAFFEB2AE029F500BB21C0 /* DetailCellBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCellBaseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +179,10 @@
 				2CEAFFE12ADFC6CF00BB21C0 /* WeatherDetailViewController.swift */,
 				2CEAFFDF2ADFC6BD00BB21C0 /* WeatherDetailView.swift */,
 				2CEAFFE32ADFD1D100BB21C0 /* WeatherDetailInfoView.swift */,
+				2CEAFFE52ADFD34B00BB21C0 /* WeatherDetailListScrollView.swift */,
+				2CEAFFEB2AE029F500BB21C0 /* DetailCellBaseView.swift */,
+				2CEAFFE72AE0268200BB21C0 /* DetailEnum.swift */,
+				2CEAFFE92AE0281A00BB21C0 /* DetailData.swift */,
 			);
 			path = WeatherDetail;
 			sourceTree = "<group>";
@@ -268,11 +280,15 @@
 				2C0069D32ADD6B4D00B933A2 /* UITableViewCell+.swift in Sources */,
 				2C0069C32ADD6A9E00B933A2 /* UIColor+.swift in Sources */,
 				2C2EFE2E2ADD5E7E00B2A2EC /* AppDelegate.swift in Sources */,
+				2CEAFFEC2AE029F500BB21C0 /* DetailCellBaseView.swift in Sources */,
 				2C2EFE302ADD5E7E00B2A2EC /* SceneDelegate.swift in Sources */,
+				2CEAFFEA2AE0281A00BB21C0 /* DetailData.swift in Sources */,
+				2CEAFFE82AE0268200BB21C0 /* DetailEnum.swift in Sources */,
 				2C528C252ADD96DE00383C90 /* UIFont+.swift in Sources */,
 				2C0069D52ADD6B6D00B933A2 /* UICollectionViewCell+.swift in Sources */,
 				2C0069CF2ADD6AF300B933A2 /* String+.swift in Sources */,
 				2C528C1F2ADD940100383C90 /* WeatherListScrollView.swift in Sources */,
+				2CEAFFE62ADFD34B00BB21C0 /* WeatherDetailListScrollView.swift in Sources */,
 				2C528C312ADDB69900383C90 /* WeatherBaseButton.swift in Sources */,
 				2C0069CD2ADD6AD400B933A2 /* UIView+.swift in Sources */,
 				2C0069D12ADD6B2300B933A2 /* UITableViewHeaderFooterView+.swift in Sources */,

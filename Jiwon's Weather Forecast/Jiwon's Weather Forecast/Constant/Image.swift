@@ -24,6 +24,7 @@ public enum Image {
     static let iconMoon = UIImage(named: "iconMoon")!
     static let iconRain = UIImage(named: "iconRain")!
     static let iconRainSun = UIImage(named: "iconRainSun")!
+    static let iconSnow = UIImage(named: "iconSnow")!
     
     //MARK: - WeatherImage
     static let weatherLarge = UIImage(named: "weatherLarge")!
