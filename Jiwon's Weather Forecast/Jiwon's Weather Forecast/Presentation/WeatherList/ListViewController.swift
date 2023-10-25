@@ -16,7 +16,7 @@ class ListViewController: UIViewController {
     
     // MARK: - UI Components
     
-    private let rootView = ListScrollView()
+    private let rootView = ListView()
     
     // MARK: - Life Cycle
     override func loadView() {

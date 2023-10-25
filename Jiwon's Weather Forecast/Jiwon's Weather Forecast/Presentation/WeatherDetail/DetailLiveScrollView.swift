@@ -63,7 +63,7 @@ class DetailLiveScrollView: UIView {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.isUserInteractionEnabled = true
             $0.isScrollEnabled = true
-            $0.showsHorizontalScrollIndicator = true
+            $0.showsHorizontalScrollIndicator = false
         }
         
         let weatherView = [detailLiveView0, detailLiveView1, detailLiveView2, detailLiveView3, detailLiveView4, detailLiveView5, detailLiveView6, detailLiveView7, detailLiveView8, detailLiveView9]

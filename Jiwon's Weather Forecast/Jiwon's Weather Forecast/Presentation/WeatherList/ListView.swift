@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ListScrollView: UIView {
+class ListView: UIView {
     
     // MARK: - Properties
     let placeholder: String = "도시 또는 공항 검색"
