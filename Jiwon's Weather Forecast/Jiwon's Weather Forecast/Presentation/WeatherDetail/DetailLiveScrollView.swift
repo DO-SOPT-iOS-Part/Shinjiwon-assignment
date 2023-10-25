@@ -20,6 +20,7 @@ class DetailLiveScrollView: UIView {
     let detailLiveBar = UIView()
     var detailLiveScrollView = UIScrollView()
     var detailLiveContentView = UIView()
+    var detailLiveStackView = UIStackView()
     
     var detailLiveView0 = DetailLiveBaseView()
     var detailLiveView1 = DetailLiveBaseView()
@@ -66,6 +67,12 @@ class DetailLiveScrollView: UIView {
             $0.showsHorizontalScrollIndicator = false
         }
         
+        detailLiveStackView.do {
+            $0.axis = .horizontal
+            $0.distribution = .fillEqually
+            $0.spacing = 22
+        }
+        
         let weatherView = [detailLiveView0, detailLiveView1, detailLiveView2, detailLiveView3, detailLiveView4, detailLiveView5, detailLiveView6, detailLiveView7, detailLiveView8, detailLiveView9]
         
         for i in 0...9 {
@@ -80,12 +87,13 @@ class DetailLiveScrollView: UIView {
     private func hierarchy() {
         self.addSubviews(detailLiveLabel, detailLiveBar, detailLiveScrollView)
         detailLiveScrollView.addSubview(detailLiveContentView)
+        detailLiveContentView.addSubview(detailLiveStackView)
         
         let weatherView = [detailLiveView0, detailLiveView1, detailLiveView2, detailLiveView3, detailLiveView4, detailLiveView5, detailLiveView6, detailLiveView7, detailLiveView8, detailLiveView9]
         
         for i in 0...9 {
             var view = weatherView[i]
-            detailLiveContentView.addSubview(view)
+            detailLiveStackView.addArrangedSubview(view)
         }
     }
     
@@ -103,31 +111,25 @@ class DetailLiveScrollView: UIView {
         }
         
         detailLiveScrollView.snp.makeConstraints() {
-            $0.top.equalTo(detailLiveBar.snp.bottom)
-            $0.bottom.equalToSuperview()
-            $0.leading.equalToSuperview()
-            $0.width.equalTo(15 + dataNum*44 + (dataNum-1)*22)
+            $0.top.bottom.leading.trailing.equalToSuperview()
         }
         
         detailLiveContentView.snp.makeConstraints() {
-            $0.top.bottom.width.equalToSuperview()
+            $0.top.bottom.leading.trailing.equalToSuperview()
+        }
+        
+        detailLiveStackView.snp.makeConstraints() {
+            $0.top.equalTo(detailLiveBar.snp.bottom)
+            $0.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(20)
         }
         
         let weatherView = [detailLiveView0, detailLiveView1, detailLiveView2, detailLiveView3, detailLiveView4, detailLiveView5, detailLiveView6, detailLiveView7, detailLiveView8, detailLiveView9]
         
-        detailLiveView0.snp.makeConstraints() {
-            $0.top.equalToSuperview()
-            $0.bottom.equalToSuperview()
-            $0.leading.equalToSuperview().inset(15)
-            $0.width.equalTo(44)
-        }
-        
-        for i in 1...9 {
+        for i in 0...9 {
             var view = weatherView[i]
-            var exView = weatherView[i-1]
             view.snp.makeConstraints() {
                 $0.top.bottom.equalToSuperview()
-                $0.leading.equalTo(exView.snp.trailing).offset(22)
                 $0.width.equalTo(44)
             }
         }
