@@ -31,7 +31,7 @@ class DetailViewController: UIViewController {
     // MARK: - Custom Method
     
     private func gesture() {
-        
+        rootView.detailBottomBar.detailListButton.addTarget(self, action: #selector(detailListBtnTap), for: .touchUpInside)
     }
     
     private func target() {
@@ -43,4 +43,8 @@ class DetailViewController: UIViewController {
     
     //MARK: - Action Method
     
+    @objc
+    func detailListBtnTap() {
+        print("Pop")
+    }
 }
