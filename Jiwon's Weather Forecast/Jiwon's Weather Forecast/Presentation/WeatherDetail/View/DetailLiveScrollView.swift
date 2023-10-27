@@ -13,7 +13,7 @@ import Then
 class DetailLiveScrollView: UIView {
     
     // MARK: - Properties
-    let dataNum = detailData.count
+    let dataNum = detailData.count - 1
     
     // MARK: - UI Components
     let detailLiveLabel = UILabel()
@@ -75,7 +75,7 @@ class DetailLiveScrollView: UIView {
         
         let weatherView = [detailLiveView0, detailLiveView1, detailLiveView2, detailLiveView3, detailLiveView4, detailLiveView5, detailLiveView6, detailLiveView7, detailLiveView8, detailLiveView9]
         
-        for i in 0...9 {
+        for i in 0...dataNum {
             var view = weatherView[i]
             view.detailTime.text = detailData[i].time
             view.detailIcon.image = detailData[i].icon.image
@@ -91,7 +91,7 @@ class DetailLiveScrollView: UIView {
         
         let weatherView = [detailLiveView0, detailLiveView1, detailLiveView2, detailLiveView3, detailLiveView4, detailLiveView5, detailLiveView6, detailLiveView7, detailLiveView8, detailLiveView9]
         
-        for i in 0...9 {
+        for i in 0...dataNum {
             var view = weatherView[i]
             detailLiveStackView.addArrangedSubview(view)
         }
@@ -126,7 +126,7 @@ class DetailLiveScrollView: UIView {
         
         let weatherView = [detailLiveView0, detailLiveView1, detailLiveView2, detailLiveView3, detailLiveView4, detailLiveView5, detailLiveView6, detailLiveView7, detailLiveView8, detailLiveView9]
         
-        for i in 0...9 {
+        for i in 0...dataNum {
             var view = weatherView[i]
             view.snp.makeConstraints() {
                 $0.top.bottom.equalToSuperview()

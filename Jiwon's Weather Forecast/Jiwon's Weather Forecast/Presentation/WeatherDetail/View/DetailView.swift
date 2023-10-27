@@ -20,6 +20,7 @@ class DetailView: UIView {
     var detailContentView = UIView()
     var detailInfoView = DetailInfoView()
     var detailListScrollView = DetailLiveScrollView()
+    var detailBottomBar = DetailBottomBar()
     
     var scrollbox = UIView()
     
@@ -58,10 +59,14 @@ class DetailView: UIView {
         scrollbox.do {
             $0.backgroundColor = .clear
         }
+        
+        detailBottomBar.do {
+            $0.backgroundColor = UIColor(hex: 0x2A3040)
+        }
     }
     
     private func hierarchy() {
-        self.addSubviews(detailImageView, detailScrollView)
+        self.addSubviews(detailImageView, detailScrollView, detailBottomBar)
         detailScrollView.addSubview(detailContentView)
         detailContentView.addSubviews(detailInfoView, detailListScrollView, scrollbox)
     }
@@ -69,6 +74,11 @@ class DetailView: UIView {
     private func layout() {
         detailImageView.snp.makeConstraints() {
             $0.edges.equalToSuperview()
+        }
+        
+        detailBottomBar.snp.makeConstraints() {
+            $0.bottom.leading.trailing.equalToSuperview()
+            $0.height.equalTo(82)
         }
         
         detailScrollView.snp.makeConstraints() {

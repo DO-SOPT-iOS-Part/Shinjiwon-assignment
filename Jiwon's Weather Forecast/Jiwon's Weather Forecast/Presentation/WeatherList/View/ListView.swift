@@ -10,6 +10,7 @@ import UIKit
 class ListView: UIView {
     
     // MARK: - Properties
+    var dataNum = listData.count - 1
     let placeholder: String = "도시 또는 공항 검색"
     private lazy var attributedString = NSMutableAttributedString(string: placeholder,
                                                                   attributes:
@@ -19,6 +20,7 @@ class ListView: UIView {
     // MARK: - UI Components
     var listScrollView = UIScrollView()
     var listContentView = UIView()
+    var listStackView = UIStackView()
     var listWeatherLabel = UILabel()
     var listWeatherSearchBar = UISearchBar()
     
@@ -26,6 +28,7 @@ class ListView: UIView {
     var listWeatherButton1 = ListBaseButton()
     var listWeatherButton2 = ListBaseButton()
     var listWeatherButton3 = ListBaseButton()
+    var listWeatherButton4 = ListBaseButton()
     
     var scrollBox = UIView()
 
@@ -52,6 +55,14 @@ class ListView: UIView {
             $0.isUserInteractionEnabled = true
             $0.isScrollEnabled = true
             $0.showsVerticalScrollIndicator = true
+            //스크롤 안되는 문제점 해결하기
+            $0.canCancelContentTouches = true
+        }
+        
+        listStackView.do {
+            $0.axis = .vertical
+            $0.distribution = .fillEqually
+            $0.spacing = 24
         }
         
         listWeatherLabel.do {
@@ -71,16 +82,22 @@ class ListView: UIView {
             $0.setImage(UIImage(), for: UISearchBar.Icon.clear, state: .normal)
         }
         
-        let weatherButton = [listWeatherButton0, listWeatherButton1, listWeatherButton2, listWeatherButton3]
+        let weatherButton = [listWeatherButton0, listWeatherButton1, listWeatherButton2, listWeatherButton3, listWeatherButton4]
         
-        for i in 0...3 {
+        for i in 0...dataNum {
             var button = weatherButton[i]
-            button.placeLabel.text = listData[i].place
-            button.timeLabel.text = listData[i].time
-            button.weatherLabel.text = listData[i].weather
-            button.currentTemLabel.text = listData[i].currentTem + "°"
-            button.highTemLabel.text = "최고:" + listData[i].highTem + "°"
-            button.lowTemLabel.text = "최저:" + listData[i].lowTem + "°"
+            button.do {
+                $0.placeLabel.text = listData[i].place
+                $0.timeLabel.text = listData[i].time
+                $0.weatherLabel.text = listData[i].weather
+                $0.currentTemLabel.text = listData[i].currentTem + "°"
+                $0.highTemLabel.text = "최고:" + listData[i].highTem + "°"
+                $0.lowTemLabel.text = "최저:" + listData[i].lowTem + "°"
+                $0.tag = i
+                
+                $0.isExclusiveTouch = true
+                $0.isMultipleTouchEnabled = true
+            }
         }
         
         scrollBox.do {
@@ -91,14 +108,18 @@ class ListView: UIView {
     private func hierarchy() {
         self.addSubview(listScrollView)
         listScrollView.addSubview(listContentView)
-        listContentView.addSubviews(listWeatherLabel, listWeatherSearchBar)
-        listContentView.addSubviews(listWeatherButton0,listWeatherButton1,listWeatherButton2,listWeatherButton3, scrollBox)
+        listContentView.addSubviews(listWeatherLabel, listWeatherSearchBar, listStackView)
+        
+        let weatherButton = [listWeatherButton0, listWeatherButton1, listWeatherButton2, listWeatherButton3, listWeatherButton4]
+        for i in 0...dataNum {
+            var button = weatherButton[i]
+            listStackView.addArrangedSubview(button)
+        }
     }
     
     private func layout() {
         listScrollView.snp.makeConstraints() {
-            $0.edges.equalToSuperview()
-            $0.bottom.equalTo(scrollBox.snp.bottom)
+            $0.top.bottom.leading.trailing.equalToSuperview()
         }
         
         listContentView.snp.makeConstraints() {
@@ -116,28 +137,19 @@ class ListView: UIView {
             $0.height.equalTo(40)
         }
         
-        listWeatherButton0.snp.makeConstraints() {
+        listStackView.snp.makeConstraints() {
             $0.top.equalTo(listWeatherSearchBar.snp.bottom).offset(24)
-            $0.leading.trailing.equalToSuperview().inset(20)
-            $0.height.equalTo(117)
+            $0.bottom.width.equalToSuperview()
         }
         
-        let weatherButton = [listWeatherButton0, listWeatherButton1, listWeatherButton2, listWeatherButton3]
-        for i in 1...3 {
+        let weatherButton = [listWeatherButton0, listWeatherButton1, listWeatherButton2, listWeatherButton3, listWeatherButton4]
+        
+        for i in 0...dataNum {
             var button = weatherButton[i]
-            var exbutton = weatherButton[i-1]
             button.snp.makeConstraints() {
-                $0.top.equalTo(exbutton.snp.bottom).offset(24)
                 $0.leading.trailing.equalToSuperview().inset(20)
                 $0.height.equalTo(117)
             }
-        }
-        
-        scrollBox.snp.makeConstraints() {
-            $0.top.equalTo(listWeatherButton3.snp.bottom).offset(10)
-            $0.width.equalToSuperview()
-            $0.centerX.equalToSuperview()
-            $0.height.equalTo(500)
         }
     }
 }

@@ -16,7 +16,7 @@ class DetailViewController: UIViewController {
     
     // MARK: - UI Components
     
-    private let rootView = DetailView()
+    let rootView = DetailView()
     let rightSwipeGesture = UISwipeGestureRecognizer()
     let leftSwipeGesture = UISwipeGestureRecognizer()
     
@@ -36,7 +36,7 @@ class DetailViewController: UIViewController {
     // MARK: - Custom Method
     
     private func gesture() {
-//        rootView.detailBottomBar.detailListButton.addTarget(self, action: #selector(detailListBtnTap), for: .touchUpInside)
+        rootView.detailBottomBar.detailListButton.addTarget(self, action: #selector(detailListBtnTap), for: .touchUpInside)
         
         rightSwipeGesture.do {
             $0.direction = .right
@@ -63,7 +63,7 @@ class DetailViewController: UIViewController {
     
     @objc
     func detailListBtnTap() {
-        print("Pop")
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc
@@ -76,6 +76,4 @@ class DetailViewController: UIViewController {
             print("왼쪽으로 스와이프 했습니다.")
         }
     }
-    
-    
 }
