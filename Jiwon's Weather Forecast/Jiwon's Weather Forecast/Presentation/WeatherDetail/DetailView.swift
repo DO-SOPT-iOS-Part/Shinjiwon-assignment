@@ -66,7 +66,7 @@ class DetailView: UIView {
     }
     
     private func hierarchy() {
-        self.addSubviews(detailImageView, detailBottomBar, detailScrollView)
+        self.addSubviews(detailImageView, detailScrollView, detailBottomBar)
         detailScrollView.addSubview(detailContentView)
         detailContentView.addSubviews(detailInfoView, detailListScrollView, scrollbox)
     }
