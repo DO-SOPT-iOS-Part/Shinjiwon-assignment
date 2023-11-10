@@ -1,14 +1,17 @@
 //
-//  DetailInfoView.swift
+//  DetailTableHeaderView.swift
 //  Jiwon's Weather Forecast
 //
-//  Created by 신지원 on 10/18/23.
+//  Created by 신지원 on 11/9/23.
 //
 
 import UIKit
 
-class DetailInfoView: UIView {
-    
+import SnapKit
+import Then
+
+class DetailHeaderView: UIView {
+
     // MARK: - UI Components
     var detailPlaceLabel = UILabel()
     var detailWeatherLabel = UILabel()
@@ -88,4 +91,3 @@ class DetailInfoView: UIView {
         }
     }
 }
-

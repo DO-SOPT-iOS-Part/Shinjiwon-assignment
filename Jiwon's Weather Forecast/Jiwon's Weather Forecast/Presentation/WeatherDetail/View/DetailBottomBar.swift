@@ -17,8 +17,7 @@ class DetailBottomBar: UIView {
     // MARK: - UI Components
     var detailMapButton = UIButton()
     var detailListButton = UIButton()
-    var detailNaviButton = UIButton()
-    var detailDotButton = UIButton()
+    let detailPageController = UIPageControl()
     
     // MARK: - Life Cycle
     override init(frame: CGRect) {
@@ -36,6 +35,8 @@ class DetailBottomBar: UIView {
     
     // MARK: - Custom Method
     private func style() {
+        self.backgroundColor = UIColor(hex: 0x2A3040)
+        
         detailMapButton.do {
             $0.setImage(Image.iconMap, for: .normal)
             $0.isUserInteractionEnabled = true
@@ -46,19 +47,16 @@ class DetailBottomBar: UIView {
             $0.isUserInteractionEnabled = true
         }
         
-        detailNaviButton.do {
-            $0.setImage(Image.iconNavigation, for: .normal)
-            $0.isUserInteractionEnabled = true
-        }
-        
-        detailDotButton.do {
-            $0.setImage(Image.iconDot, for: .normal)
-            $0.isUserInteractionEnabled = true
+        detailPageController.do {
+            $0.hidesForSinglePage = false
+            $0.numberOfPages = listData.count
+            $0.pageIndicatorTintColor = .gray
+            $0.currentPageIndicatorTintColor = .white
         }
     }
     
     private func hierarchy() {
-        self.addSubviews(detailMapButton, detailDotButton, detailListButton, detailNaviButton)
+        self.addSubviews(detailMapButton, detailListButton, detailPageController)
     }
     
     private func layout() {
@@ -74,16 +72,9 @@ class DetailBottomBar: UIView {
             $0.size.equalTo(44)
         }
         
-        detailNaviButton.snp.makeConstraints() {
+        detailPageController.snp.makeConstraints() {
             $0.top.equalToSuperview().inset(14)
-            $0.trailing.equalTo(super.snp.centerX)
-            $0.size.equalTo(24)
-        }
-        
-        detailDotButton.snp.makeConstraints() {
-            $0.top.equalToSuperview().inset(14)
-            $0.leading.equalTo(super.snp.centerX)
-            $0.size.equalTo(24)
+            $0.centerX.equalToSuperview()
         }
     }
 }

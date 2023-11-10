@@ -1,8 +1,8 @@
 //
-//  File.swift
+//  ListTableViewCell.swift
 //  Jiwon's Weather Forecast
 //
-//  Created by 신지원 on 2023/10/17.
+//  Created by 신지원 on 11/5/23.
 //
 
 import UIKit
@@ -10,11 +10,12 @@ import UIKit
 import SnapKit
 import Then
 
-class ListBaseButton: UIButton {
-    
-    // MARK: - Properties
+class ListTableViewCell: UITableViewCell {
     
     // MARK: - UI Components
+    
+    var listButton = UIButton()
+    
     var placeLabel = UILabel()
     var timeLabel = UILabel()
     var weatherLabel = UILabel()
@@ -22,23 +23,28 @@ class ListBaseButton: UIButton {
     var highTemLabel = UILabel()
     var lowTemLabel = UILabel()
     
-    
     // MARK: - Life Cycle
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        setStyle()
-        setHierarchy()
-        setLayout()
+        cellStyle()
+        hierarchy()
+        layout()
     }
+    
     
     @available(*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
     
-    func setStyle() {
-        self.setBackgroundImage(Image.weatherSmall, for: .normal)
+    func cellStyle() {
+        
+        self.backgroundColor = .black
+        
+        listButton.setBackgroundImage(Image.weatherSmall, for: .normal)
+        
         placeLabel.do {
             $0.font = .SFPro(.bold, size: 24)
             $0.textColor = .white
@@ -69,11 +75,19 @@ class ListBaseButton: UIButton {
         }
     }
     
-    func setHierarchy() {
-        self.addSubviews(placeLabel, timeLabel, weatherLabel, currentTemLabel, lowTemLabel, highTemLabel)
+    func hierarchy() {
+        self.addSubview(listButton)
+        listButton.addSubviews(placeLabel, timeLabel, weatherLabel, currentTemLabel, lowTemLabel, highTemLabel)
     }
     
-    func setLayout() {
+    func layout() {
+        listButton.snp.makeConstraints() {
+            $0.top.equalToSuperview().inset(16)
+            $0.bottom.equalToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.leading.equalToSuperview().inset(20)
+        }
+        
         placeLabel.snp.makeConstraints() {
             $0.top.equalToSuperview().inset(10)
             $0.leading.equalToSuperview().inset(16)
@@ -82,7 +96,6 @@ class ListBaseButton: UIButton {
         timeLabel.snp.makeConstraints() {
             $0.top.equalTo(placeLabel.snp.bottom).offset(2)
             $0.leading.equalTo(placeLabel.snp.leading)
-            
         }
         
         weatherLabel.snp.makeConstraints() {
@@ -105,5 +118,18 @@ class ListBaseButton: UIButton {
             $0.trailing.equalTo(lowTemLabel.snp.leading).offset(-6)
         }
     }
+    
+    func dataBind(tag : Int){
+        
+        placeLabel.text = listData[tag].place
+        timeLabel.text = listData[tag].time
+        weatherLabel.text = listData[tag].weather
+        currentTemLabel.text = listData[tag].currentTem + "°"
+        highTemLabel.text = "최고:" + listData[tag].highTem + "°"
+        lowTemLabel.text = "최저:" + listData[tag].lowTem + "°"
+        
+        listButton.tag = tag
+//        $0.isExclusiveTouch = true
+//        $0.isMultipleTouchEnabled = true
+    }
 }
-
