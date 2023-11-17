@@ -1,34 +1,31 @@
 //
-//  DetailCellBaseView.swift
+//  DetailLiveCollectionViewCell.swift
 //  Jiwon's Weather Forecast
 //
-//  Created by 신지원 on 10/18/23.
+//  Created by 신지원 on 11/8/23.
 //
 
 import UIKit
 
-class DetailLiveBaseView: UIView {
+class DetailLiveCollectionViewCell: UICollectionViewCell {
     
     // MARK: - UI Components
     var detailTime = UILabel()
     var detailIcon = UIImageView()
     var detailTemp = UILabel()
     
-    // MARK: - Life Cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         style()
         hierarchy()
         layout()
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Custom Method
     private func style() {
         detailTime.do {
             $0.font = .SFPro(.medium, size: 17)
@@ -49,7 +46,7 @@ class DetailLiveBaseView: UIView {
         detailIcon.snp.makeConstraints() {
             $0.top.equalToSuperview().inset(50)
             $0.centerX.equalToSuperview()
-            $0.leading.trailing.equalToSuperview()
+            $0.size.equalTo(44)
         }
         
         detailTime.snp.makeConstraints() {
@@ -61,5 +58,11 @@ class DetailLiveBaseView: UIView {
             $0.top.equalTo(detailIcon.snp.bottom).offset(14)
             $0.centerX.equalToSuperview()
         }
+    }
+    
+    func dataBind(tag : Int){
+        detailIcon.image = detailLiveData[tag].icon.image
+        detailTime.text = detailLiveData[tag].time
+        detailTemp.text = detailLiveData[tag].tem + "°"
     }
 }

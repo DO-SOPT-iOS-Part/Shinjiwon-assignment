@@ -17,8 +17,6 @@ class DetailViewController: UIViewController {
     // MARK: - UI Components
     
     let rootView = DetailView()
-    let rightSwipeGesture = UISwipeGestureRecognizer()
-    let leftSwipeGesture = UISwipeGestureRecognizer()
     
     // MARK: - Life Cycle
     override func loadView() {
@@ -37,19 +35,6 @@ class DetailViewController: UIViewController {
     
     private func gesture() {
         rootView.detailBottomBar.detailListButton.addTarget(self, action: #selector(detailListBtnTap), for: .touchUpInside)
-        
-        rightSwipeGesture.do {
-            $0.direction = .right
-            $0.addTarget(self, action: #selector(handleSwipe(_:)))
-        }
-        
-        leftSwipeGesture.do {
-            $0.direction = .left
-            $0.addTarget(self, action: #selector(handleSwipe(_:)))
-        }
-        
-//        rootView.addGestureRecognizer(rightSwipeGesture)
-//        rootView.addGestureRecognizer(leftSwipeGesture)
     }
     
     private func target() {
@@ -57,6 +42,8 @@ class DetailViewController: UIViewController {
     }
     
     private func delegate() {
+        rootView.detailCollectionView.delegate = self
+        rootView.detailCollectionView.dataSource = self
     }
     
     //MARK: - Action Method
@@ -65,15 +52,36 @@ class DetailViewController: UIViewController {
     func detailListBtnTap() {
         self.navigationController?.popViewController(animated: true)
     }
+}
+
+extension DetailViewController : UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
     
-    @objc
-    func handleSwipe(_ sender: UISwipeGestureRecognizer) {
-        if sender.direction == .right {
-            print("오른쪽으로 스와이프 했습니다.")
-        }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width , height: UIScreen.main.bounds.height)
+    }
+}
+
+extension DetailViewController : UICollectionViewDelegate {
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let page = Int(targetContentOffset.pointee.x / UIScreen.main.bounds.width)
         
-        else if sender.direction == .left {
-            print("왼쪽으로 스와이프 했습니다.")
+        if(page < listData.count ){
+            rootView.detailBottomBar.detailPageController.currentPage = page
         }
+    }
+}
+
+extension DetailViewController : UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return listData.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailCollectionViewCell.cellIdentifier, for: indexPath) as? DetailCollectionViewCell else { return UICollectionViewCell() }
+        cell.dataBind(tag: indexPath.row)
+        return cell
     }
 }

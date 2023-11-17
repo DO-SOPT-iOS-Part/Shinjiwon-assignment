@@ -14,4 +14,8 @@ extension UIView {
             addSubview(view)
         }
     }
+    
+    static var identifier : String {
+        return String(describing: self)
+    }
 }
