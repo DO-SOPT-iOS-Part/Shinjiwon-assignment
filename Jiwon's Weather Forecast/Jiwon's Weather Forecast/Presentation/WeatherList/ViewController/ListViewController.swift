@@ -13,9 +13,30 @@ import Then
 class ListViewController: UIViewController {
     
     // MARK: - Properties
+    let cities = ["gongju", "gwangju", "gumi", "gunsan", "daegu", "daejeon", "mokpo", "busan", "seosan", "seoul", "sokcho", "suwon", "suncheon", "ulsan", "iksan", "jeonju", "jeju", "cheonan", "cheongju", "chuncheon"]
     
     // MARK: - UI Components
     private let rootView = ListView()
+    private var weatherdummy: [Weathers] = []
+    
+    func getWeathers(cities : [String]) {
+        for i in cities {
+            WeatherService.shared.getWeather(forCity: i) { weather, error in
+                if let error = error {
+                    print("Error: \(error)")
+                } else if let weather = weather {
+                    DispatchQueue.main.async { // 메인 스레드로 전환
+                        self.weatherdummy.append(weather)
+                        self.loadData()
+                    }
+                }
+            }
+        }
+    }
+    
+    func loadData() {
+        rootView.listTableView.reloadData()
+    }
     
     // MARK: - Life Cycle
     override func loadView() {
@@ -24,6 +45,8 @@ class ListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        getWeathers(cities: cities)
         
         gesture()
         target()
@@ -51,14 +74,14 @@ class ListViewController: UIViewController {
         let tag = sender.tag
         print("listTap with number: \(tag)")
         
-//        let detailVC = DetailViewController()
-//        detailVC.rootView.detailInfoView.detailWeatherLabel.text = listData[tag].weather
-//        detailVC.rootView.detailInfoView.detailHighTemLabel.text = "최고:" + listData[tag].highTem + "°"
-//        detailVC.rootView.detailInfoView.detailLowTemLabel.text = "최저:" + listData[tag].lowTem + "°"
-//        detailVC.rootView.detailInfoView.detailCurrentTemLabel.text = listData[tag].currentTem + "°"
-//        detailVC.rootView.detailInfoView.detailPlaceLabel.text = listData[tag].place
-//        
-//        self.navigationController?.pushViewController(detailVC, animated: true)
+        //        let detailVC = DetailViewController()
+        //        detailVC.rootView.detailInfoView.detailWeatherLabel.text = listData[tag].weather
+        //        detailVC.rootView.detailInfoView.detailHighTemLabel.text = "최고:" + listData[tag].highTem + "°"
+        //        detailVC.rootView.detailInfoView.detailLowTemLabel.text = "최저:" + listData[tag].lowTem + "°"
+        //        detailVC.rootView.detailInfoView.detailCurrentTemLabel.text = listData[tag].currentTem + "°"
+        //        detailVC.rootView.detailInfoView.detailPlaceLabel.text = listData[tag].place
+        //
+        //        self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 
@@ -80,12 +103,12 @@ extension ListViewController : UITableViewDelegate {
 
 extension ListViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listData.count
+        return weatherdummy.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.cellIdentifier, for: indexPath) as? ListTableViewCell else { return UITableViewCell() }
-        cell.dataBind(tag: indexPath.row)
+        cell.dataBind(weatherdummy[indexPath.row])
         
         return cell
     }

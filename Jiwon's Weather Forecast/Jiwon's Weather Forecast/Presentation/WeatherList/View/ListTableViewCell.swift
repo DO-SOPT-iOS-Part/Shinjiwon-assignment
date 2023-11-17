@@ -119,17 +119,34 @@ class ListTableViewCell: UITableViewCell {
         }
     }
     
-    func dataBind(tag : Int){
+    func dataBind(_ weather: Weathers){
         
-        placeLabel.text = listData[tag].place
-        timeLabel.text = listData[tag].time
-        weatherLabel.text = listData[tag].weather
-        currentTemLabel.text = listData[tag].currentTem + "°"
-        highTemLabel.text = "최고:" + listData[tag].highTem + "°"
-        lowTemLabel.text = "최저:" + listData[tag].lowTem + "°"
+        placeLabel.text = String(weather.name)
+        timeLabel.text = convertTime(timezone: weather.timezone)
+        weatherLabel.text = weather.weather.first?.description
+        currentTemLabel.text = String(Int(weather.main.temp)) + "°"
+        highTemLabel.text = "최고:" + String(Int(weather.main.temp_max)) + "°"
+        lowTemLabel.text = "최저:" + String(Int(weather.main.temp_min)) + "°"
         
         listButton.tag = tag
-//        $0.isExclusiveTouch = true
-//        $0.isMultipleTouchEnabled = true
+    }
+    
+    func convertTime(timezone: Int) -> String {
+        guard let timeZone = TimeZone(secondsFromGMT: timezone) else {
+            return "Invalid Timezone"
+        }
+        
+        let dateFormatter = DateFormatter()
+        
+        //24시간 기준 => HH
+        //12시간 기준 => hh
+        //AM, PM 표기 => a 위치
+        
+        dateFormatter.dateFormat = "a hh:mm"
+        dateFormatter.amSymbol = "AM"
+        dateFormatter.pmSymbol = "PM"
+        dateFormatter.timeZone = timeZone
+        let localTime = dateFormatter.string(from: Date())
+        return localTime
     }
 }

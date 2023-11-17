@@ -29,6 +29,8 @@ class DetailViewController: UIViewController {
         gesture()
         target()
         delegate()
+        
+//        responseData(forCity: "Seoul")
     }
     
     // MARK: - Custom Method

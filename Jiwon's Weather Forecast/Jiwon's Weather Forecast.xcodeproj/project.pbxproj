@@ -28,6 +28,8 @@
 		2C528C2B2ADDA16E00383C90 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2C528C2A2ADDA16E00383C90 /* SF-Pro-Display-Regular.otf */; };
 		2C528C2F2ADDA19100383C90 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2C528C2E2ADDA19100383C90 /* SF-Pro-Display-Medium.otf */; };
 		2C528C332ADDBE8800383C90 /* SF-Pro-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2C528C322ADDBE8800383C90 /* SF-Pro-Display-Thin.otf */; };
+		2C63B9CD2B067B4C009C6824 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C63B9CC2B067B4C009C6824 /* WeatherService.swift */; };
+		2C63B9D12B067FE0009C6824 /* WeatherBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C63B9D02B067FE0009C6824 /* WeatherBody.swift */; };
 		2C9D36622AE8E3870033C284 /* DetailBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9D36612AE8E3870033C284 /* DetailBottomBar.swift */; };
 		2CC2ABB22AF6956E00418A7C /* ListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC2ABB12AF6956E00418A7C /* ListHeaderView.swift */; };
 		2CC2ABB42AF6966000418A7C /* ListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC2ABB32AF6966000418A7C /* ListTableView.swift */; };
@@ -70,6 +72,8 @@
 		2C528C2A2ADDA16E00383C90 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
 		2C528C2E2ADDA19100383C90 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
 		2C528C322ADDBE8800383C90 /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
+		2C63B9CC2B067B4C009C6824 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		2C63B9D02B067FE0009C6824 /* WeatherBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherBody.swift; sourceTree = "<group>"; };
 		2C9D36612AE8E3870033C284 /* DetailBottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBottomBar.swift; sourceTree = "<group>"; };
 		2CC2ABB12AF6956E00418A7C /* ListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHeaderView.swift; sourceTree = "<group>"; };
 		2CC2ABB32AF6966000418A7C /* ListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableView.swift; sourceTree = "<group>"; };
@@ -124,6 +128,7 @@
 		2C2EFE2C2ADD5E7E00B2A2EC /* Jiwon's Weather Forecast */ = {
 			isa = PBXGroup;
 			children = (
+				2C63B9CB2B067B18009C6824 /* Network */,
 				2CEE64662AEBC08E00A645F6 /* App */,
 				2C528C1A2ADD90EA00383C90 /* Presentation */,
 				2C2EFE492ADD69D900B2A2EC /* Extension */,
@@ -186,6 +191,15 @@
 				2C528C222ADD95A200383C90 /* Image.swift */,
 			);
 			path = Constant;
+			sourceTree = "<group>";
+		};
+		2C63B9CB2B067B18009C6824 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				2C63B9CC2B067B4C009C6824 /* WeatherService.swift */,
+				2C63B9D02B067FE0009C6824 /* WeatherBody.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		2CEAFFDE2ADFC69B00BB21C0 /* WeatherDetail */ = {
@@ -369,6 +383,7 @@
 				2C2EFE2E2ADD5E7E00B2A2EC /* AppDelegate.swift in Sources */,
 				2C2EFE302ADD5E7E00B2A2EC /* SceneDelegate.swift in Sources */,
 				2CEAFFEA2AE0281A00BB21C0 /* DetailData.swift in Sources */,
+				2C63B9CD2B067B4C009C6824 /* WeatherService.swift in Sources */,
 				2CEAFFE82AE0268200BB21C0 /* DetailEnum.swift in Sources */,
 				2C528C252ADD96DE00383C90 /* UIFont+.swift in Sources */,
 				2C0069D52ADD6B6D00B933A2 /* UICollectionViewCell+.swift in Sources */,
@@ -377,6 +392,7 @@
 				2CF5DB1F2AFCC8E800137423 /* DetailEnum2.swift in Sources */,
 				2CEAFFE62ADFD34B00BB21C0 /* DetailLiveView.swift in Sources */,
 				2CF5DB232AFCD2E500137423 /* DetailWeekGradientView.swift in Sources */,
+				2C63B9D12B067FE0009C6824 /* WeatherBody.swift in Sources */,
 				2C9D36622AE8E3870033C284 /* DetailBottomBar.swift in Sources */,
 				2CC2ABB62AF697B300418A7C /* ListTableViewCell.swift in Sources */,
 				2CC2ABB22AF6956E00418A7C /* ListHeaderView.swift in Sources */,
