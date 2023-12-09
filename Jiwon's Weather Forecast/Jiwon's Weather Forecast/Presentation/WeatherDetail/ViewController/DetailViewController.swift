@@ -29,8 +29,6 @@ class DetailViewController: UIViewController {
         gesture()
         target()
         delegate()
-        
-//        responseData(forCity: "Seoul")
     }
     
     // MARK: - Custom Method
@@ -83,7 +81,6 @@ extension DetailViewController : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailCollectionViewCell.cellIdentifier, for: indexPath) as? DetailCollectionViewCell else { return UICollectionViewCell() }
-        cell.dataBind(tag: indexPath.row)
         return cell
     }
 }
