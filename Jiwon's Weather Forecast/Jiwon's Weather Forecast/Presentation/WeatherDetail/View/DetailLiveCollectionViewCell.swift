@@ -9,6 +9,9 @@ import UIKit
 
 class DetailLiveCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - Properties
+    static let identifier: String = "DetailLiveCollectionViewCell"
+    
     // MARK: - UI Components
     var detailTime = UILabel()
     var detailIcon = UIImageView()
@@ -60,9 +63,9 @@ class DetailLiveCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func dataBind(tag : Int){
-        detailIcon.image = detailLiveData[tag].icon.image
-        detailTime.text = detailLiveData[tag].time
-        detailTemp.text = detailLiveData[tag].tem + "°"
-    }
+//    func dataBind(tag : Int){
+//        detailIcon.image = detailLiveData[tag].icon.image
+//        detailTime.text = detailLiveData[tag].time
+//        detailTemp.text = detailLiveData[tag].tem + "°"
+//    }
 }

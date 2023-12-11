@@ -22,7 +22,7 @@ class DetailWeekView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        findMaxMin()
+//        findMaxMin()
         
         delegate()
         register()
@@ -43,7 +43,7 @@ class DetailWeekView: UIView {
     }
     
     private func register() {
-        detailWeekCollectionView.register(DetailWeekCollectionViewCell.self, forCellWithReuseIdentifier: DetailWeekCollectionViewCell.cellIdentifier)
+        detailWeekCollectionView.register(DetailWeekCollectionViewCell.self, forCellWithReuseIdentifier: DetailWeekCollectionViewCell.identifier)
     }
     
     private func style() {
@@ -85,7 +85,7 @@ class DetailWeekView: UIView {
         detailWeekCollectionView.snp.makeConstraints() {
             $0.top.equalTo(detailWeekLabel.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
-            $0.height.equalTo(55 * detailWeekData.count)
+            $0.height.equalTo(55 * 5)
         }
     }
 }
@@ -103,12 +103,12 @@ extension DetailWeekView : UICollectionViewDelegate {}
 
 extension DetailWeekView : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return detailWeekData.count
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailWeekCollectionViewCell.cellIdentifier, for: indexPath) as? DetailWeekCollectionViewCell else { return UICollectionViewCell() }
-        cell.dataBind(tag: indexPath.row)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailWeekCollectionViewCell.identifier, for: indexPath) as? DetailWeekCollectionViewCell else { return UICollectionViewCell() }
+//        cell.dataBind(tag: indexPath.row)
         return cell
     }
 }

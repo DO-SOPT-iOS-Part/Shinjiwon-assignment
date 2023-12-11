@@ -42,7 +42,7 @@ class DetailLiveView: UIView {
     }
     
     private func register() {
-        detailLiveCollectionView.register(DetailLiveCollectionViewCell.self, forCellWithReuseIdentifier: DetailLiveCollectionViewCell.cellIdentifier)
+        detailLiveCollectionView.register(DetailLiveCollectionViewCell.self, forCellWithReuseIdentifier: DetailLiveCollectionViewCell.identifier)
     }
     
     private func style() {
@@ -115,12 +115,12 @@ extension DetailLiveView : UICollectionViewDelegate {}
 
 extension DetailLiveView : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return detailLiveData.count
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailLiveCollectionViewCell.cellIdentifier, for: indexPath) as? DetailLiveCollectionViewCell else { return UICollectionViewCell() }
-        cell.dataBind(tag: indexPath.row)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailLiveCollectionViewCell.identifier, for: indexPath) as? DetailLiveCollectionViewCell else { return UICollectionViewCell() }
+//        cell.dataBind(tag: indexPath.row)
         return cell
     }
 }
