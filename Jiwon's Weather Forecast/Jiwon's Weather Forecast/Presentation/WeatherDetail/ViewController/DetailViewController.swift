@@ -13,11 +13,14 @@ import Then
 class DetailViewController: UIViewController {
     
     // MARK: - Properties
+    var index: Int = 0
+    public var weatherDummy : [Weathers] = []
+    public var detailTag = Int()
     
     // MARK: - UI Components
     
     let rootView = DetailView()
-    
+
     // MARK: - Life Cycle
     override func loadView() {
         self.view = rootView
@@ -76,11 +79,12 @@ extension DetailViewController : UICollectionViewDelegate {
 
 extension DetailViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return listData.count
+        return weatherDummy.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailCollectionViewCell.cellIdentifier, for: indexPath) as? DetailCollectionViewCell else { return UICollectionViewCell() }
+        cell.weatherDummy = self.weatherDummy
         return cell
     }
 }

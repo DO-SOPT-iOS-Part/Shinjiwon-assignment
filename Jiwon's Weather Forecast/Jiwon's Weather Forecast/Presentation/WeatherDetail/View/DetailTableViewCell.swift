@@ -11,6 +11,9 @@ import SnapKit
 import Then
 
 class DetailTableViewCell: UITableViewCell {
+    
+    // MARK: - Properties
+    public var weatherDummy: [Weathers] = []
 
     // MARK: - UI Components
     let detailHeaderView = DetailHeaderView()
@@ -63,11 +66,11 @@ class DetailTableViewCell: UITableViewCell {
         }
     }
     
-    func dataBind(tag : Int){
-        detailHeaderView.detailPlaceLabel.text = listData[tag].place
-        detailHeaderView.detailWeatherLabel.text = listData[tag].weather
-        detailHeaderView.detailCurrentTemLabel.text = listData[tag].currentTem + "°"
-        detailHeaderView.detailHighTemLabel.text = "최고:" + listData[tag].highTem + "°"
-        detailHeaderView.detailLowTemLabel.text = "최저:" + listData[tag].lowTem + "°"
+    func dataBind(){
+//        detailHeaderView.detailPlaceLabel.text = weatherdummy[0].name
+//        detailHeaderView.detailWeatherLabel.text = weatherdummy[0].weather.first?.description
+//        detailHeaderView.detailCurrentTemLabel.text = String(weatherdummy[0].main.temp) + "°"
+//        detailHeaderView.detailHighTemLabel.text = "최고:" + String(weatherdummy[0].main.temp_max) + "°"
+//        detailHeaderView.detailLowTemLabel.text = "최저:" + String(weatherdummy[0].main.temp_min) + "°"
     }
 }

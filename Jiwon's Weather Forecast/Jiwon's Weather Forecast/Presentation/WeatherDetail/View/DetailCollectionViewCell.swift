@@ -13,6 +13,7 @@ import Then
 class DetailCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
+    public var weatherDummy: [Weathers] = []
     
     // MARK: - UI Components
     let detailBackImageView = UIImageView()
@@ -78,7 +79,7 @@ extension DetailCollectionViewCell: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.identifier, for: indexPath) as? DetailTableViewCell else { return DetailTableViewCell() }
-        cell.dataBind(tag: indexPath.row)
+        cell.dataBind()
         return cell
     }
     

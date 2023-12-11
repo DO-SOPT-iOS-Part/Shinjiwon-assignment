@@ -13,11 +13,12 @@ import Then
 class ListViewController: UIViewController {
     
     // MARK: - Properties
-    let cities = ["gongju", "gwangju", "gumi", "gunsan", "daegu", "daejeon", "mokpo", "busan", "seosan", "seoul", "sokcho", "suwon", "suncheon", "ulsan", "iksan", "jeonju", "jeju", "cheonan", "cheongju", "chuncheon"]
+    private var weatherDummy: [Weathers] = []
     
     // MARK: - UI Components
     private let rootView = ListView()
-    private var weatherdummy: [Weathers] = []
+    public var detailPageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+    lazy var detailVCs: [DetailViewController] = []
     
     func getWeathers(cities : [String]) {
         for i in cities {
@@ -26,7 +27,7 @@ class ListViewController: UIViewController {
                     print("Error: \(error)")
                 } else if let weather = weather {
                     DispatchQueue.main.async { // 메인 스레드로 전환
-                        self.weatherdummy.append(weather)
+                        self.weatherDummy.append(weather)
                         self.loadData()
                     }
                 }
@@ -46,7 +47,14 @@ class ListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getWeathers(cities: cities)
+        let detailVC = getDetailVC(withIndex: 0)
+        detailPageViewController.setViewControllers([detailVC], direction: .forward, animated: true, completion: nil)
+        
+        self.addChild(detailPageViewController)
+//        self.view.addSubview(detailPageViewController.view)
+        detailPageViewController.didMove(toParent: self)
+        
+        getWeathers(cities: Cities)
         
         gesture()
         target()
@@ -64,24 +72,27 @@ class ListViewController: UIViewController {
     }
     
     private func delegate() {
+        detailPageViewController.dataSource = self
+        detailPageViewController.delegate = self
         rootView.listTableView.delegate = self
         rootView.listTableView.dataSource = self
+        //        ListTable
+    }
+    
+    func getDetailVC(withIndex index: Int) -> DetailViewController {
+        let detailVC = DetailViewController()
+        detailVC.index = index
+        print("🥳\(index)")
+        return detailVC
     }
     
     //MARK: - Action Method
+    
     @objc
-    func listBtnTap(_ sender: UIButton) {
-        let tag = sender.tag
-        print("listTap with number: \(tag)")
-        
-        //        let detailVC = DetailViewController()
-        //        detailVC.rootView.detailInfoView.detailWeatherLabel.text = listData[tag].weather
-        //        detailVC.rootView.detailInfoView.detailHighTemLabel.text = "최고:" + listData[tag].highTem + "°"
-        //        detailVC.rootView.detailInfoView.detailLowTemLabel.text = "최저:" + listData[tag].lowTem + "°"
-        //        detailVC.rootView.detailInfoView.detailCurrentTemLabel.text = listData[tag].currentTem + "°"
-        //        detailVC.rootView.detailInfoView.detailPlaceLabel.text = listData[tag].place
-        //
-        //        self.navigationController?.pushViewController(detailVC, animated: true)
+    private func buttonTap(_ sender: UIButton) {
+        let index = sender.tag
+        let detailVC = getDetailVC(withIndex : index)
+        detailPageViewController.setViewControllers([detailVC], direction: .forward, animated: true, completion: nil)
     }
 }
 
@@ -103,16 +114,50 @@ extension ListViewController : UITableViewDelegate {
 
 extension ListViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return weatherdummy.count
+        return weatherDummy.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.cellIdentifier, for: indexPath) as? ListTableViewCell else { return UITableViewCell() }
-        cell.dataBind(weatherdummy[indexPath.row])
+        cell.dataBind(weatherDummy[indexPath.row])
         
         return cell
     }
 }
+
+extension ListViewController: ListTableViewCellDelegate {
+    func listBtnTap(cell: UITableViewCell) {
+        
+        print("💖")
+        
+//        if let indexPath = rootView.listTableView.indexPath(for: cell) {
+//            // 여기서 indexPath를 사용하여 필요한 작업을 수행합니다.
+//            print("Button tapped in cell at section \(indexPath.section), row \(indexPath.row)")
+//        }
+        
+        //        let detailVC = DetailViewController()
+        //        detailVC.weatherDummy = self.weatherDummy
+        //        detailVC.detailTag = tag
+        //        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
+}
+
+extension ListViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        if let currentIndex = detailVCs.firstIndex(of: viewController as! DetailViewController), currentIndex > 0 {
+            return detailVCs[currentIndex - 1]
+        }
+        return nil
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        if let currentIndex = detailVCs.firstIndex(of: viewController as! DetailViewController), currentIndex < detailVCs.count - 1 {
+            return detailVCs[currentIndex + 1]
+        }
+        return nil
+    }
+}
+
 
 //// MARK: - UISearchBarDelegate
 //extension ListViewController: UISearchBarDelegate {

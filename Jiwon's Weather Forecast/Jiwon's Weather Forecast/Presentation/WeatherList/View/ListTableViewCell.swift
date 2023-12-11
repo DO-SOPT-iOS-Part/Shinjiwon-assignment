@@ -10,7 +10,13 @@ import UIKit
 import SnapKit
 import Then
 
+protocol ListTableViewCellDelegate : AnyObject {
+    func listBtnTap(cell: UITableViewCell)
+}
+
 class ListTableViewCell: UITableViewCell {
+    
+    weak var delegate: ListTableViewCellDelegate?
     
     // MARK: - UI Components
     
@@ -28,6 +34,7 @@ class ListTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        self.contentView.isHidden = true
         cellStyle()
         hierarchy()
         layout()
@@ -42,8 +49,13 @@ class ListTableViewCell: UITableViewCell {
     func cellStyle() {
         
         self.backgroundColor = .black
+        self.selectedBackgroundView?.isHidden = true
         
-        listButton.setBackgroundImage(Image.weatherSmall, for: .normal)
+        listButton.do {
+            $0.setBackgroundImage(Image.weatherSmall, for: .normal)
+            $0.addTarget(self, action: #selector(listBtnTap), for: .touchUpInside)
+            $0.isUserInteractionEnabled = true
+        }
         
         placeLabel.do {
             $0.font = .SFPro(.bold, size: 24)
@@ -148,5 +160,10 @@ class ListTableViewCell: UITableViewCell {
         dateFormatter.timeZone = timeZone
         let localTime = dateFormatter.string(from: Date())
         return localTime
+    }
+    
+    @objc
+    private func listBtnTap() {
+        delegate?.listBtnTap(cell: self)
     }
 }

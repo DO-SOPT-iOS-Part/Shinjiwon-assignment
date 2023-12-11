@@ -34,7 +34,6 @@ class WeatherService {
             
             do {
                 let decodedData = try JSONDecoder().decode(Weathers.self, from: data)
-//                print(decodedData)
                 completion(decodedData, nil)
             } catch {
                 completion(nil, error)
