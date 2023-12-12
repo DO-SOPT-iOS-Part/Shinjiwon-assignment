@@ -79,13 +79,13 @@ extension DetailViewController : UICollectionViewDelegate {
 
 extension DetailViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("🥹\(weatherDummy.count)")
         return weatherDummy.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailCollectionViewCell.identifier, for: indexPath) as? DetailCollectionViewCell else { return UICollectionViewCell() }
         cell.weatherData = weatherDummy[indexPath.row]
+        print("\(indexPath.row)")
         return cell
     }
 }

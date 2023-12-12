@@ -45,7 +45,7 @@ class ListTableViewHeader: UITableViewHeaderFooterView {
         }
         
         listWeatherSearchBar.do {
-            $0.backgroundColor = .clear
+            $0.backgroundColor = .white
             $0.placeholder = "도시 또는 공항 검색"
             $0.barStyle = .black
             $0.clipsToBounds = true
@@ -61,7 +61,7 @@ class ListTableViewHeader: UITableViewHeaderFooterView {
     
     private func layout() {
         listWeatherLabel.snp.makeConstraints() {
-            $0.top.equalToSuperview().inset(53)
+            $0.top.equalToSuperview()
             $0.leading.equalToSuperview().inset(20)
         }
         

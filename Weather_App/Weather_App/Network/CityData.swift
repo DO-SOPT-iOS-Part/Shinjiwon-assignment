@@ -7,6 +7,6 @@
 
 import Foundation
 
-let Cities = ["gongju", "new york", "chuncheon", "tokyo"]
+let Cities = ["Seoul", "new york", "chuncheon", "tokyo", "London", "gongju"]
 
 //let Cities = ["gongju", "gwangju", "gumi", "gunsan", "daegu", "daejeon", "mokpo", "busan", "seosan", "seoul", "sokcho", "suwon", "suncheon", "ulsan", "iksan", "jeonju", "jeju", "cheonan", "cheongju", "chuncheon"]

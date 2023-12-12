@@ -62,16 +62,11 @@ extension ListViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ListTableViewHeader.identifier) as? ListTableViewHeader else { return UIView()}
         header.listWeatherSearchBar.delegate = self
-        if isSearching {
-            header.listWeatherLabel.isHidden = true
-        } else {
-            header.listWeatherLabel.isHidden = false
-        }
         return header
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 169.0 - 16.0
+        return 88.0
     }
 }
 
@@ -116,20 +111,34 @@ extension ListViewController: ListTableViewCellDelegate {
 
 extension ListViewController : UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        isSearching = true
         if searchText.isEmpty {
             isFiltering = false
             filteredWeatherData = []
+            searchBar.showsCancelButton = false
         } else {
             isFiltering = true
             filteredWeatherData = weatherDummy.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+            searchBar.showsCancelButton = true
         }
         rootView.listTableView.reloadData()
     }
-
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        isSearching = false
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.searchTextField.text = ""
+        searchBar.showsCancelButton = false
+        isFiltering = false
+        filteredWeatherData = []
+        rootView.listTableView.reloadData()
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+    }
+//    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+//    }
+//
+//    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+//    }
 }
 
 extension ListViewController {
