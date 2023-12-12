@@ -14,6 +14,9 @@ class ListViewController: UIViewController {
     
     // MARK: - Properties
     private var weatherDummy: [Weathers] = []
+    private var filteredWeatherData: [Weathers] = []
+    private var isFiltering: Bool = false
+    private var isSearching: Bool = false
     
     // MARK: - UI Components
     
@@ -58,6 +61,12 @@ extension ListViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ListTableViewHeader.identifier) as? ListTableViewHeader else { return UIView()}
+        header.listWeatherSearchBar.delegate = self
+        if isSearching {
+            header.listWeatherLabel.isHidden = true
+        } else {
+            header.listWeatherLabel.isHidden = false
+        }
         return header
     }
     
@@ -68,13 +77,14 @@ extension ListViewController : UITableViewDelegate {
 
 extension ListViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return weatherDummy.count
+        return isFiltering ? filteredWeatherData.count : weatherDummy.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as? ListTableViewCell else { return UITableViewCell() }
         cell.delegate = self
-        cell.dataBind(weatherDummy[indexPath.row])
+        let weatherData = isFiltering ? filteredWeatherData[indexPath.row] : weatherDummy[indexPath.row]
+        cell.dataBind(weatherData)
         return cell
     }
 }
@@ -101,6 +111,24 @@ extension ListViewController: ListTableViewCellDelegate {
         } else {
             print("Error")
         }
+    }
+}
+
+extension ListViewController : UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        isSearching = true
+        if searchText.isEmpty {
+            isFiltering = false
+            filteredWeatherData = []
+        } else {
+            isFiltering = true
+            filteredWeatherData = weatherDummy.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+        }
+        rootView.listTableView.reloadData()
+    }
+
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        isSearching = false
     }
 }
 

@@ -15,12 +15,7 @@ class ListTableViewHeader: UITableViewHeaderFooterView {
     // MARK: - Properties
     
     static let identifier: String = "ListTableViewHeader"
-    let placeholder: String = "도시 또는 공항 검색"
-    private lazy var attributedString = NSMutableAttributedString(string: placeholder,
-                                                                  attributes:
-                                                                    [NSAttributedString.Key.font : UIFont.SFPro(.regular, size: 19),
-                                                                     NSAttributedString.Key.foregroundColor: UIColor(hex: 0x8C8C8C)])
-    
+ 
     // MARK: - UI Components
     
     var listWeatherLabel = UILabel()
@@ -50,10 +45,9 @@ class ListTableViewHeader: UITableViewHeaderFooterView {
         }
         
         listWeatherSearchBar.do {
-            $0.searchTextField.backgroundColor = UIColor(hex: 0x1A1A1A)
-            $0.searchTextField.leftView?.tintColor = UIColor(hex: 0x8C8C8C)
-            $0.searchTextField.attributedPlaceholder = attributedString
-            $0.searchTextField.textColor = .white
+            $0.backgroundColor = .clear
+            $0.placeholder = "도시 또는 공항 검색"
+            $0.barStyle = .black
             $0.clipsToBounds = true
             $0.setShowsCancelButton(false, animated: true)
             $0.barTintColor = .clear
