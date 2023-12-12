@@ -145,8 +145,6 @@ extension ListTableViewCell {
         currentTemLabel.text = String(Int(weather.main.temp)) + "°"
         highTemLabel.text = "highest:" + String(Int(weather.main.temp_max)) + "°"
         lowTemLabel.text = "lowest:" + String(Int(weather.main.temp_min)) + "°"
-        
-        listButton.tag = tag
     }
     
     func convertTime(timezone: Int) -> String {

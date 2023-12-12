@@ -48,8 +48,8 @@ class DetailViewController: UIViewController {
     }
     
     private func delegate() {
-        rootView.detailCollectionView.delegate = self
-        rootView.detailCollectionView.dataSource = self
+        rootView.detailTableView.delegate = self
+        rootView.detailTableView.dataSource = self
     }
 }
 
@@ -77,15 +77,19 @@ extension DetailViewController : UICollectionViewDelegate {
     }
 }
 
-extension DetailViewController : UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return weatherDummy.count
+extension DetailViewController: UITableViewDelegate {}
+extension DetailViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailCollectionViewCell.identifier, for: indexPath) as? DetailCollectionViewCell else { return UICollectionViewCell() }
-        cell.weatherData = weatherDummy[indexPath.row]
-        print("\(indexPath.row)")
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.identifier, for: indexPath) as? DetailTableViewCell else { return DetailTableViewCell() }
+        cell.dataBind(weatherDummy[VCNum])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 1300.0
     }
 }

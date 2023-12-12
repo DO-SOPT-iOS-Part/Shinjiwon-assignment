@@ -101,6 +101,7 @@ extension ListViewController: ListTableViewCellDelegate {
             
             detailPageVC.weatherDummy = self.weatherDummy
             detailPageVC.initializePageViewController(with: indexPath.row)
+            detailPageVC.detailBottomBar.detailPageController.currentPage = indexPath.row
             self.navigationController?.pushViewController(detailPageVC, animated: false)
             
         } else {

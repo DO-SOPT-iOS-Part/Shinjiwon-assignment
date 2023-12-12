@@ -29,5 +29,7 @@ public enum Image {
     //MARK: - WeatherImage
     static let weatherLarge = UIImage(named: "weatherLarge")!
     static let weatherSmall = UIImage(named: "weatherSmall")!
+    static let weatherDayLarge = UIImage(named: "weatherDayLarge")!
+    static let weatherDaySmall = UIImage(named: "weatherDaySmall")!
 }
 

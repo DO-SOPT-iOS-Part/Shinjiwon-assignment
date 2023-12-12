@@ -63,13 +63,20 @@ class DetailPageViewController: UIViewController {
         
         for detailVC in VCList {
             detailVC.protocolDelegate = self
-            detailVC.weatherDummy = self.weatherDummy
+            detailVC.weatherDummy = weatherDummy
             detailVC.VCListNum = VCList.count
         }
     }
 }
 
-extension DetailPageViewController : UIPageViewControllerDelegate {}
+extension DetailPageViewController : UIPageViewControllerDelegate {
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        guard completed else { return }
+        if let viewController = pageViewController.viewControllers?.first {
+            detailBottomBar.detailPageController.currentPage = VCList.firstIndex(of: viewController as! DetailViewController) ?? 0
+        }
+    }
+}
 extension DetailPageViewController : UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         if let currentIndex = VCList.firstIndex(of: viewController as! DetailViewController), currentIndex > 0 {

@@ -11,7 +11,6 @@
 		2C6DE2A22B274CF600DB9044 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6DE2A12B274CF600DB9044 /* DetailViewController.swift */; };
 		2C6DE2A42B27512000DB9044 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6DE2A32B27512000DB9044 /* DetailView.swift */; };
 		2C6DE2A62B275F4B00DB9044 /* DetailBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6DE2A52B275F4B00DB9044 /* DetailBottomBar.swift */; };
-		2C6DE2A82B2762C000DB9044 /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6DE2A72B2762C000DB9044 /* DetailCollectionViewCell.swift */; };
 		2C6DE2AA2B27631500DB9044 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6DE2A92B27631500DB9044 /* DetailTableViewCell.swift */; };
 		2C6DE2AC2B27633E00DB9044 /* DetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6DE2AB2B27633E00DB9044 /* DetailHeaderView.swift */; };
 		2C6DE2AE2B27634D00DB9044 /* DetailLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6DE2AD2B27634D00DB9044 /* DetailLiveView.swift */; };
@@ -25,6 +24,7 @@
 		2C6DE2BF2B276A7900DB9044 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6DE2BE2B276A7900DB9044 /* WeatherService.swift */; };
 		2C6DE2C12B276A8E00DB9044 /* WeatherBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6DE2C02B276A8E00DB9044 /* WeatherBody.swift */; };
 		2C6DE2C32B276AA300DB9044 /* CityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6DE2C22B276AA300DB9044 /* CityData.swift */; };
+		2C6DE2C92B28AAC500DB9044 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C6DE2C72B28AAC500DB9044 /* Assets.xcassets */; };
 		2C9F915B2B2700800028121F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9F915A2B2700800028121F /* AppDelegate.swift */; };
 		2C9F915D2B2700800028121F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9F915C2B2700800028121F /* SceneDelegate.swift */; };
 		2C9F915F2B2700800028121F /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9F915E2B2700800028121F /* ListViewController.swift */; };
@@ -50,7 +50,6 @@
 		2C6DE2A12B274CF600DB9044 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		2C6DE2A32B27512000DB9044 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		2C6DE2A52B275F4B00DB9044 /* DetailBottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBottomBar.swift; sourceTree = "<group>"; };
-		2C6DE2A72B2762C000DB9044 /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		2C6DE2A92B27631500DB9044 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		2C6DE2AB2B27633E00DB9044 /* DetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderView.swift; sourceTree = "<group>"; };
 		2C6DE2AD2B27634D00DB9044 /* DetailLiveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailLiveView.swift; path = "../../../Jiwon's Weather Forecast/Jiwon's Weather Forecast/Presentation/WeatherDetail/View/DetailLiveView.swift"; sourceTree = "<group>"; };
@@ -64,6 +63,7 @@
 		2C6DE2BE2B276A7900DB9044 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		2C6DE2C02B276A8E00DB9044 /* WeatherBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherBody.swift; sourceTree = "<group>"; };
 		2C6DE2C22B276AA300DB9044 /* CityData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityData.swift; sourceTree = "<group>"; };
+		2C6DE2C72B28AAC500DB9044 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C9F91572B2700800028121F /* Weather_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C9F915A2B2700800028121F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C9F915C2B2700800028121F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,7 +104,6 @@
 				2C6DE2A52B275F4B00DB9044 /* DetailBottomBar.swift */,
 				2C6DE2A12B274CF600DB9044 /* DetailViewController.swift */,
 				2C6DE2A32B27512000DB9044 /* DetailView.swift */,
-				2C6DE2A72B2762C000DB9044 /* DetailCollectionViewCell.swift */,
 				2C6DE2A92B27631500DB9044 /* DetailTableViewCell.swift */,
 				2C6DE2AB2B27633E00DB9044 /* DetailHeaderView.swift */,
 				2C6DE2AD2B27634D00DB9044 /* DetailLiveView.swift */,
@@ -168,6 +167,7 @@
 				2C9F91792B2702E70028121F /* ListTableView.swift */,
 				2C9F917B2B2703170028121F /* ListTableViewHeader.swift */,
 				2C9F917D2B2703DA0028121F /* ListTableViewCell.swift */,
+				2C6DE2C72B28AAC500DB9044 /* Assets.xcassets */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -266,6 +266,7 @@
 				2C9F91872B2704610028121F /* SF-Pro-Display-Bold.otf in Resources */,
 				2C9F91852B27045D0028121F /* SF-Pro-Display-Thin.otf in Resources */,
 				2C9F918B2B27046A0028121F /* SF-Pro-Display-Regular.otf in Resources */,
+				2C6DE2C92B28AAC500DB9044 /* Assets.xcassets in Resources */,
 				2C9F91892B2704660028121F /* SF-Pro-Display-Medium.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,7 +292,6 @@
 				2C9F91782B2702210028121F /* ListView.swift in Sources */,
 				2C6DE2AC2B27633E00DB9044 /* DetailHeaderView.swift in Sources */,
 				2C6DE2B02B27635000DB9044 /* DetailLiveCollectionViewCell.swift in Sources */,
-				2C6DE2A82B2762C000DB9044 /* DetailCollectionViewCell.swift in Sources */,
 				2C6DE2C12B276A8E00DB9044 /* WeatherBody.swift in Sources */,
 				2C9F915F2B2700800028121F /* ListViewController.swift in Sources */,
 				2C9F915B2B2700800028121F /* AppDelegate.swift in Sources */,
