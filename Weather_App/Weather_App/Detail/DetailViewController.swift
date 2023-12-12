@@ -33,19 +33,11 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        gesture()
-        target()
+
         delegate()
     }
     
     // MARK: - Custom Method
-    private func gesture() {
-        
-    }
-    
-    private func target() {
-        
-    }
     
     private func delegate() {
         rootView.detailTableView.delegate = self
@@ -90,6 +82,6 @@ extension DetailViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 1300.0
+        return 1250
     }
 }

@@ -46,7 +46,7 @@ class DetailTableViewCell: UITableViewCell {
     
     private func layout() {
         detailHeaderView.snp.makeConstraints() {
-            $0.top.equalToSuperview().inset(78)
+            $0.top.equalToSuperview().inset(34)
             $0.width.equalToSuperview()
             $0.height.equalTo(250)
         }

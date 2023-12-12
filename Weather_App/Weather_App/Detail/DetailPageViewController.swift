@@ -27,6 +27,7 @@ class DetailPageViewController: UIViewController {
         super.viewDidLoad()
         
         delegate()
+        target()
         
         setHierarchy()
         setLayout()
@@ -66,6 +67,15 @@ class DetailPageViewController: UIViewController {
             detailVC.weatherDummy = weatherDummy
             detailVC.VCListNum = VCList.count
         }
+    }
+    
+    private func target() {
+        detailBottomBar.detailListButton.addTarget(self, action: #selector(detailListBtnTap), for: .touchUpInside)
+    }
+    
+    @objc
+    private func detailListBtnTap() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

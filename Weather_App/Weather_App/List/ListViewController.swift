@@ -33,18 +33,15 @@ class ListViewController: UIViewController {
         
         getWeathers(cities: Cities)
         
-        gesture()
-        target()
+        setNavi()
         delegate()
     }
     
     // MARK: - Custom Method
-    private func gesture() {
-        
-    }
-    
-    private func target() {
-        
+    private func setNavi() {
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        backBarButtonItem.tintColor = .black
+        self.navigationItem.backBarButtonItem = backBarButtonItem
     }
     
     private func delegate() {
@@ -135,11 +132,6 @@ extension ListViewController : UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.endEditing(true)
     }
-//    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-//    }
-//
-//    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-//    }
 }
 
 extension ListViewController {
