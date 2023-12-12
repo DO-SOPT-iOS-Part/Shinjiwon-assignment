@@ -136,3 +136,35 @@ class ListTableViewCell: UITableViewCell {
         delegate?.listBtnTap(self)
     }
 }
+
+extension ListTableViewCell {
+    func dataBind(_ weather: Weathers){
+        placeLabel.text = String(weather.name)
+        timeLabel.text = convertTime(timezone: weather.timezone)
+        weatherLabel.text = weather.weather.first?.description
+        currentTemLabel.text = String(Int(weather.main.temp)) + "°"
+        highTemLabel.text = "highest:" + String(Int(weather.main.temp_max)) + "°"
+        lowTemLabel.text = "lowest:" + String(Int(weather.main.temp_min)) + "°"
+        
+        listButton.tag = tag
+    }
+    
+    func convertTime(timezone: Int) -> String {
+        guard let timeZone = TimeZone(secondsFromGMT: timezone) else {
+            return "Invalid Timezone"
+        }
+        
+        let dateFormatter = DateFormatter()
+        
+        //24시간 기준 => HH
+        //12시간 기준 => hh
+        //AM, PM 표기 => a 위치
+        
+        dateFormatter.dateFormat = "a hh:mm"
+        dateFormatter.amSymbol = "AM"
+        dateFormatter.pmSymbol = "PM"
+        dateFormatter.timeZone = timeZone
+        let localTime = dateFormatter.string(from: Date())
+        return localTime
+    }
+}

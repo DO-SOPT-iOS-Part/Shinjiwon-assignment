@@ -66,3 +66,13 @@ class DetailTableViewCell: UITableViewCell {
         }
     }
 }
+
+extension DetailTableViewCell {
+    func dataBind(_ data : Weathers) {
+        detailHeaderView.detailPlaceLabel.text = data.name
+        detailHeaderView.detailWeatherLabel.text = data.weather.first?.description
+        detailHeaderView.detailCurrentTemLabel.text = String(Int(data.main.temp)) + "°"
+        detailHeaderView.detailHighTemLabel.text = "highest:" + String(Int(data.main.temp_max)) + "°"
+        detailHeaderView.detailLowTemLabel.text = "lowest:" + String(Int(data.main.temp_min)) + "°"
+    }
+}

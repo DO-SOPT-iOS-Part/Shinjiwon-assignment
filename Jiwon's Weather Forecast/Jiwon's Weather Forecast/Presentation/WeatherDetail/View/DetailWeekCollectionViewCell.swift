@@ -109,28 +109,27 @@ class DetailWeekCollectionViewCell: UICollectionViewCell {
         }
     }
     
-//    func dataBind(tag : Int){
-//        detailIcon.image = detailWeekData[tag].icon.image
-//        detailDay.text = detailWeekData[tag].day
-//        detailHighTemp.text = String(detailWeekData[tag].highTem) + "°"
-//        detailLowTemp.text = String(detailWeekData[tag].lowTem) + "°"
-//        
-//        var min = (Double)(detailWeekData[tag].lowTem - detailWeekDataMin) / (Double)(detailWeekDataMax - detailWeekDataMin) * 100
-//        var max = (Double)(detailWeekDataMax - detailWeekData[tag].highTem) / (Double)(detailWeekDataMax - detailWeekDataMin) * 100
-//        print(min)
-//        print(max)
-//        empty1.snp.makeConstraints() {
-//            $0.top.equalTo(detailGradientTemp.snp.top)
-//            $0.leading.equalTo(detailGradientTemp.snp.leading)
-//            $0.width.equalTo(min)
-//            $0.height.equalTo(4)
-//        }
-//        
-//        empty2.snp.makeConstraints() {
-//            $0.top.equalTo(detailGradientTemp.snp.top)
-//            $0.trailing.equalTo(detailGradientTemp.snp.trailing)
-//            $0.width.equalTo(max)
-//            $0.height.equalTo(4)
-//        }
-//    }
+    func dataBind(tag : Int){
+        detailIcon.image = detailWeekData[tag].icon.image
+        detailDay.text = detailWeekData[tag].day
+        detailHighTemp.text = String(detailWeekData[tag].highTem) + "°"
+        detailLowTemp.text = String(detailWeekData[tag].lowTem) + "°"
+        
+        var min = (Double)(detailWeekData[tag].lowTem - detailWeekDataMin) / (Double)(detailWeekDataMax - detailWeekDataMin) * 100
+        var max = (Double)(detailWeekDataMax - detailWeekData[tag].highTem) / (Double)(detailWeekDataMax - detailWeekDataMin) * 100
+        
+        empty1.snp.makeConstraints() {
+            $0.top.equalTo(detailGradientTemp.snp.top)
+            $0.leading.equalTo(detailGradientTemp.snp.leading)
+            $0.width.equalTo(min)
+            $0.height.equalTo(4)
+        }
+        
+        empty2.snp.makeConstraints() {
+            $0.top.equalTo(detailGradientTemp.snp.top)
+            $0.trailing.equalTo(detailGradientTemp.snp.trailing)
+            $0.width.equalTo(max)
+            $0.height.equalTo(4)
+        }
+    }
 }

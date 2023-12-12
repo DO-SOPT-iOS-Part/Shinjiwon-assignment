@@ -49,7 +49,7 @@ class DetailBottomBar: UIView {
         
         detailPageController.do {
             $0.hidesForSinglePage = false
-            $0.numberOfPages = 5
+            $0.numberOfPages = Cities.count
             $0.pageIndicatorTintColor = .gray
             $0.currentPageIndicatorTintColor = .white
         }

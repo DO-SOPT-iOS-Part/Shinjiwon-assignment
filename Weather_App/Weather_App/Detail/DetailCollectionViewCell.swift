@@ -10,10 +10,17 @@ import UIKit
 import SnapKit
 import Then
 
+protocol DetailCollectionViewCellDelegate : AnyObject {
+    func getWeatherData1() -> [Weathers]
+    func getVCNum1() -> Int
+}
+
 class DetailCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     static let identifier: String = "DetailCollectionViewCell"
+    var VCListNum = 0
+    var weatherData = Weathers()
     
     // MARK: - UI Components
     let detailBackImageView = UIImageView()
@@ -79,7 +86,7 @@ extension DetailCollectionViewCell: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.identifier, for: indexPath) as? DetailTableViewCell else { return DetailTableViewCell() }
-//        cell.dataBind()
+        cell.dataBind(weatherData)
         return cell
     }
     
@@ -87,3 +94,4 @@ extension DetailCollectionViewCell: UITableViewDataSource {
         return 1300.0
     }
 }
+

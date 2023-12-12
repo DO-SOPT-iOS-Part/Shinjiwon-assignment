@@ -63,9 +63,9 @@ class DetailLiveCollectionViewCell: UICollectionViewCell {
         }
     }
     
-//    func dataBind(tag : Int){
-//        detailIcon.image = detailLiveData[tag].icon.image
-//        detailTime.text = detailLiveData[tag].time
-//        detailTemp.text = detailLiveData[tag].tem + "°"
-//    }
+    func dataBind(tag : Int){
+        detailIcon.image = detailLiveData[tag].icon.image
+        detailTime.text = detailLiveData[tag].time
+        detailTemp.text = detailLiveData[tag].tem + "°"
+    }
 }

@@ -13,6 +13,7 @@ import Then
 class ListViewController: UIViewController {
     
     // MARK: - Properties
+    private var weatherDummy: [Weathers] = []
     
     // MARK: - UI Components
     
@@ -26,6 +27,8 @@ class ListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        getWeathers(cities: Cities)
         
         gesture()
         target()
@@ -45,6 +48,7 @@ class ListViewController: UIViewController {
         rootView.listTableView.delegate = self
         rootView.listTableView.dataSource = self
     }
+    
 }
 
 extension ListViewController : UITableViewDelegate {
@@ -64,35 +68,69 @@ extension ListViewController : UITableViewDelegate {
 
 extension ListViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return weatherDummy.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as? ListTableViewCell else { return UITableViewCell() }
         cell.delegate = self
+        cell.dataBind(weatherDummy[indexPath.row])
         return cell
     }
 }
 
 extension ListViewController: ListTableViewCellDelegate {
     func listBtnTap(_ cell: UITableViewCell) {
+        guard weatherDummy.count == Cities.count else {
+            print("데이터가 아직 로드되지 않았습니다.")
+            return
+        }
+        
         if let indexPath = rootView.listTableView.indexPath(for: cell) {
-            print("\(indexPath.row)")
-            
             let detailPageVC = DetailPageViewController()
-            
-            for index in 0..<5 {
+            for index in 0..<weatherDummy.count {
                 let detailVC = DetailViewController()
                 detailVC.VCNum = index
                 detailPageVC.VCList.append(detailVC)
             }
-        
-            detailPageVC.VCIndex = indexPath.row
+            
+            detailPageVC.weatherDummy = self.weatherDummy
+            detailPageVC.initializePageViewController(with: indexPath.row)
             self.navigationController?.pushViewController(detailPageVC, animated: false)
             
         } else {
             print("Error")
         }
+    }
+}
+
+extension ListViewController {
+    func getWeathers(cities : [String]) {
+        var tempWeathers: [Weathers?] = Array(repeating: nil, count: cities.count)
+        let dispatchGroup = DispatchGroup()
+        
+        for (index, city) in cities.enumerated() {
+            dispatchGroup.enter()
+            WeatherService.shared.getWeather(forCity: city) { weather, error in
+                if let error = error {
+                    print("Error: \(error)")
+                } else if let weather = weather {
+                    DispatchQueue.main.async { // 메인 스레드로 전환
+                        tempWeathers[index] = weather
+                    }
+                    dispatchGroup.leave()
+                }
+            }
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            self.weatherDummy = tempWeathers.compactMap { $0 }
+            self.loadData()
+        }
+    }
+    
+    func loadData() {
+        rootView.listTableView.reloadData()
     }
 }
 

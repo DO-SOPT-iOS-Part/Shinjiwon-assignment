@@ -13,33 +13,36 @@ import Then
 class DetailPageViewController: UIViewController {
     
     // MARK: - Properties
-    public var VCIndex = 1
+    var VCIndex = 1
+    var weatherDummy : [Weathers] = []
     
     // MARK: - UI Components
-    public lazy var VCList = [DetailViewController]();
-    public var detailPageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-    private var detailBottomBar = DetailBottomBar()
+    lazy var VCList = [DetailViewController]();
+    var detailPageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+    var detailBottomBar = DetailBottomBar()
     
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUI()
+        delegate()
+        
         setHierarchy()
         setLayout()
-        gesture()
-        delegate()
     }
     
     // MARK: - Custom Method
     
-    private func setUI() {
-        detailPageViewController.setViewControllers([VCList[VCIndex]], direction: .forward, animated: true, completion: nil)
+    func initializePageViewController(with index: Int) {
+        let currentVC = VCList[index]
+        detailPageViewController.setViewControllers([currentVC], direction: .forward, animated: false, completion: nil)
     }
     
     private func setHierarchy() {
+        self.addChild(detailPageViewController)
         self.view.addSubview(detailPageViewController.view)
+        detailPageViewController.didMove(toParent: self)
         detailPageViewController.view.addSubview(detailBottomBar)
     }
     
@@ -54,21 +57,14 @@ class DetailPageViewController: UIViewController {
         }
     }
     
-    private func gesture() {
-        
-    }
-    
-    //    private func target() {
-    //
-    //    }
-    
     private func delegate() {
         detailPageViewController.delegate = self
         detailPageViewController.dataSource = self
         
-        let detailVC = DetailViewController()
         for detailVC in VCList {
             detailVC.protocolDelegate = self
+            detailVC.weatherDummy = self.weatherDummy
+            detailVC.VCListNum = VCList.count
         }
     }
 }
@@ -93,6 +89,5 @@ extension DetailPageViewController : UIPageViewControllerDataSource {
 extension DetailPageViewController : DetailViewControllerDelegate {
     func pageScroll(_ page : Int) {
         detailBottomBar.detailPageController.currentPage = page
-        print("💗\(page)")
     }
 }

@@ -20,7 +20,7 @@ class DetailView: UIView {
     // MARK: - Life Cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
         register()
         
         style()
@@ -54,11 +54,10 @@ class DetailView: UIView {
     }
     
     private func hierarchy() {
-        self.addSubviews( detailCollectionView)
+        self.addSubviews(detailCollectionView)
     }
     
     private func layout() {
-        
         detailCollectionView.snp.makeConstraints() {
             $0.top.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()

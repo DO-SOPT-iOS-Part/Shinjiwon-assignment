@@ -17,8 +17,10 @@ protocol DetailViewControllerDelegate : AnyObject {
 class DetailViewController: UIViewController {
     
     // MARK: - Properties
-    var VCNum = 0
+    var VCNum = Int()
+    var VCListNum = Int()
     weak var protocolDelegate : DetailViewControllerDelegate?
+    var weatherDummy : [Weathers] = []
     
     // MARK: - UI Components
     private var rootView = DetailView()
@@ -31,7 +33,6 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         gesture()
         target()
         delegate()
@@ -64,22 +65,27 @@ extension DetailViewController : UICollectionViewDelegateFlowLayout {
 
 extension DetailViewController : UICollectionViewDelegate {
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let page = Int(targetContentOffset.pointee.x / UIScreen.main.bounds.width)
-        if(page < 5){
+
+        let page = Int(targetContentOffset.pointee.x / scrollView.frame.size.width)
+        if(page < weatherDummy.count){
+            scrollView.isScrollEnabled = true
             protocolDelegate?.pageScroll(page)
+        }
+        else {
+            scrollView.isScrollEnabled = false
         }
     }
 }
 
 extension DetailViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        print("🥹\(weatherDummy.count)")
+        return weatherDummy.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailCollectionViewCell.identifier, for: indexPath) as? DetailCollectionViewCell else { return UICollectionViewCell() }
-        //        cell.weatherDummy = self.weatherDummy
+        cell.weatherData = weatherDummy[indexPath.row]
         return cell
     }
 }
-

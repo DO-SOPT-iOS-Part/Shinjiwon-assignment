@@ -22,7 +22,7 @@ class DetailWeekView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-//        findMaxMin()
+        findMaxMin()
         
         delegate()
         register()
@@ -55,7 +55,7 @@ class DetailWeekView: UIView {
         }
         
         detailWeekLabel.do {
-            $0.text = "10일간의 일기예보"
+            $0.text = "10-DAY FORECAST"
             $0.font = .SFPro(.thin, size: 15)
             $0.textColor = UIColor(white: 1.0, alpha: 0.5)
             $0.numberOfLines = 0
@@ -85,7 +85,7 @@ class DetailWeekView: UIView {
         detailWeekCollectionView.snp.makeConstraints() {
             $0.top.equalTo(detailWeekLabel.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
-            $0.height.equalTo(55 * 5)
+            $0.height.equalTo(55 * detailWeekData.count)
         }
     }
 }
@@ -103,12 +103,12 @@ extension DetailWeekView : UICollectionViewDelegate {}
 
 extension DetailWeekView : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return detailWeekData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailWeekCollectionViewCell.identifier, for: indexPath) as? DetailWeekCollectionViewCell else { return UICollectionViewCell() }
-//        cell.dataBind(tag: indexPath.row)
+        cell.dataBind(tag: indexPath.row)
         return cell
     }
 }
