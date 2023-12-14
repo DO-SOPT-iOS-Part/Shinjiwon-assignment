@@ -87,6 +87,7 @@ extension DetailPageViewController : UIPageViewControllerDelegate {
         }
     }
 }
+
 extension DetailPageViewController : UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         if let currentIndex = VCList.firstIndex(of: viewController as! DetailViewController), currentIndex > 0 {

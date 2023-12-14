@@ -31,6 +31,8 @@ class ListTableViewCell: UITableViewCell {
     var highTemLabel = UILabel()
     var lowTemLabel = UILabel()
     
+    let snowEmitter = CAEmitterLayer()
+    
     // MARK: - Life Cycle
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -39,6 +41,17 @@ class ListTableViewCell: UITableViewCell {
         cellStyle()
         hierarchy()
         layout()
+        
+        addSnowEffect()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        // 레이아웃 업데이트 시 Emitter Layer의 위치와 크기를 버튼의 경계에 맞춤
+        snowEmitter.frame = listButton.bounds
+        snowEmitter.emitterPosition = CGPoint(x: listButton.bounds.width / 2, y: 0)
+        snowEmitter.emitterSize = CGSize(width: listButton.bounds.width, height: 1)
     }
     
     @available(*, unavailable)
@@ -134,6 +147,27 @@ class ListTableViewCell: UITableViewCell {
     @objc
     private func listBtnTap() {
         delegate?.listBtnTap(self)
+    }
+    
+    private func addSnowEffect() {
+        // Emitter Layer의 위치와 크기를 버튼의 크기에 맞게 설정
+        snowEmitter.emitterPosition = CGPoint(x: listButton.bounds.width / 2, y: 0)
+        snowEmitter.emitterShape = .line
+        snowEmitter.emitterSize = CGSize(width: listButton.bounds.width, height: 1)
+        snowEmitter.frame = listButton.bounds
+
+        let snowflake = CAEmitterCell()
+        snowflake.contents = UIImage.iconNavigation.cgImage
+        snowflake.birthRate = 20
+        snowflake.lifetime = Float(listButton.bounds.height / 50) // 버튼 높이에 맞춰 조정
+        snowflake.velocity = 50 // 수직 속도, 필요에 따라 조정
+        snowflake.velocityRange = 20
+        snowflake.yAcceleration = 100
+        snowflake.scale = 0.05
+        snowflake.scaleRange = 0.02
+
+        snowEmitter.emitterCells = [snowflake]
+        listButton.layer.addSublayer(snowEmitter)
     }
 }
 
