@@ -42,7 +42,7 @@ class DetailLiveView: UIView {
     }
     
     private func register() {
-        detailLiveCollectionView.register(DetailLiveCollectionViewCell.self, forCellWithReuseIdentifier: DetailLiveCollectionViewCell.cellIdentifier)
+        detailLiveCollectionView.register(DetailLiveCollectionViewCell.self, forCellWithReuseIdentifier: DetailLiveCollectionViewCell.identifier)
     }
     
     private func style() {
@@ -54,7 +54,7 @@ class DetailLiveView: UIView {
         }
         
         detailLiveLabel.do {
-            $0.text = "08:00~09:00에 강우 상태가, 18:00에 한때 흐린 상태가 예상됩니다."
+            $0.text = "From 08:00 to 09:00 Rainy conditions are expected"
             $0.font = .SFPro(.regular, size: 18)
             $0.textColor = .white
             $0.numberOfLines = 0
@@ -112,14 +112,13 @@ extension DetailLiveView : UICollectionViewDelegateFlowLayout {
     }
 }
 extension DetailLiveView : UICollectionViewDelegate {}
-
 extension DetailLiveView : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return detailLiveData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailLiveCollectionViewCell.cellIdentifier, for: indexPath) as? DetailLiveCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailLiveCollectionViewCell.identifier, for: indexPath) as? DetailLiveCollectionViewCell else { return UICollectionViewCell() }
         cell.dataBind(tag: indexPath.row)
         return cell
     }

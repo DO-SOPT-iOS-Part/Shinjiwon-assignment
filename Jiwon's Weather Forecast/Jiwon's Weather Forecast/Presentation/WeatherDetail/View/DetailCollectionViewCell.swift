@@ -13,14 +13,18 @@ import Then
 class DetailCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
+    public var weatherDummy: [Weathers] = []
     
     // MARK: - UI Components
     let detailBackImageView = UIImageView()
-    let detailTableView = DetailTableView()
+    let detailTableView = UITableView()
     
     // MARK: - Life Cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        register()
+        delegate()
         
         cellStyle()
         hierarchy()
@@ -31,10 +35,14 @@ class DetailCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-//    private func delegate() {
-//        detailTableView.delegate = self
-//        detailTableView.dataSource = self
-//    }
+    private func register() {
+        detailTableView.register(DetailTableViewCell.self, forCellReuseIdentifier: DetailTableViewCell.cellIdentifier)
+    }
+    
+    private func delegate() {
+        detailTableView.delegate = self
+        detailTableView.dataSource = self
+    }
     
     private func cellStyle() {
         self.backgroundColor = UIColor(hex: 0x2A3040)
@@ -61,29 +69,21 @@ class DetailCollectionViewCell: UICollectionViewCell {
             $0.edges.equalToSuperview()
         }
     }
+}
+
+extension DetailCollectionViewCell: UITableViewDelegate {}
+extension DetailCollectionViewCell: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
     
-    func dataBind(tag : Int){
-        detailTableView.detailHeaderView.detailPlaceLabel.text = listData[tag].place
-        detailTableView.detailHeaderView.detailWeatherLabel.text = listData[tag].weather
-        detailTableView.detailHeaderView.detailCurrentTemLabel.text = listData[tag].currentTem + "°"
-        detailTableView.detailHeaderView.detailHighTemLabel.text = "최고:" + listData[tag].highTem + "°"
-        detailTableView.detailHeaderView.detailLowTemLabel.text = "최저:" + listData[tag].lowTem + "°"
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.identifier, for: indexPath) as? DetailTableViewCell else { return DetailTableViewCell() }
+        cell.dataBind()
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 1300.0
     }
 }
-//
-//extension DetailCollectionViewCell : UITableViewDelegate {}
-//extension DetailCollectionViewCell : UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 1
-//    }
-//    
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let cell = UITableViewCell()
-//        return cell
-//    }
-//    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        <#code#>
-//    }
-//    
-//}

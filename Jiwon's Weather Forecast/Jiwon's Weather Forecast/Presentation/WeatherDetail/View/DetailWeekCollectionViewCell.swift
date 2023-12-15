@@ -9,6 +9,9 @@ import UIKit
 
 class DetailWeekCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - Properties
+    static let identifier: String = "DetailWeekCollectionViewCell"
+    
     // MARK: - UI Components
     var detailDay = UILabel()
     var detailIcon = UIImageView()
@@ -114,8 +117,7 @@ class DetailWeekCollectionViewCell: UICollectionViewCell {
         
         var min = (Double)(detailWeekData[tag].lowTem - detailWeekDataMin) / (Double)(detailWeekDataMax - detailWeekDataMin) * 100
         var max = (Double)(detailWeekDataMax - detailWeekData[tag].highTem) / (Double)(detailWeekDataMax - detailWeekDataMin) * 100
-        print(min)
-        print(max)
+        
         empty1.snp.makeConstraints() {
             $0.top.equalTo(detailGradientTemp.snp.top)
             $0.leading.equalTo(detailGradientTemp.snp.leading)

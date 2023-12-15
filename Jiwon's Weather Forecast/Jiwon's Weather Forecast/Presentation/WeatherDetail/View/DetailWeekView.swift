@@ -43,7 +43,7 @@ class DetailWeekView: UIView {
     }
     
     private func register() {
-        detailWeekCollectionView.register(DetailWeekCollectionViewCell.self, forCellWithReuseIdentifier: DetailWeekCollectionViewCell.cellIdentifier)
+        detailWeekCollectionView.register(DetailWeekCollectionViewCell.self, forCellWithReuseIdentifier: DetailWeekCollectionViewCell.identifier)
     }
     
     private func style() {
@@ -55,7 +55,7 @@ class DetailWeekView: UIView {
         }
         
         detailWeekLabel.do {
-            $0.text = "10일간의 일기예보"
+            $0.text = "10-DAY FORECAST"
             $0.font = .SFPro(.thin, size: 15)
             $0.textColor = UIColor(white: 1.0, alpha: 0.5)
             $0.numberOfLines = 0
@@ -107,7 +107,7 @@ extension DetailWeekView : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailWeekCollectionViewCell.cellIdentifier, for: indexPath) as? DetailWeekCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailWeekCollectionViewCell.identifier, for: indexPath) as? DetailWeekCollectionViewCell else { return UICollectionViewCell() }
         cell.dataBind(tag: indexPath.row)
         return cell
     }

@@ -9,6 +9,9 @@ import UIKit
 
 class DetailLiveCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - Properties
+    static let identifier: String = "DetailLiveCollectionViewCell"
+    
     // MARK: - UI Components
     var detailTime = UILabel()
     var detailIcon = UIImageView()
